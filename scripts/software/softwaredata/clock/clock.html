@@ -1,0 +1,36 @@
+<html>
+  <head>
+  <link rel="stylesheet" type="text/css" href="https://udn.codersquack.ml/scripts/software/softwaredata/clock/clock.css"/>
+  </head>
+  <body>
+    <center><digiclock></digiclock></center><br><center><date></date><br>
+    <!-- amogus
+    <analogclock>
+      <div class="clockface">
+        <div id="clock-hand-hours" class="clock-hand"></div>
+      </div>
+    -->
+    </analogclock>
+    </center>
+    <script>
+      setInterval(function(){
+        var time = new Date();
+        var clock = document.querySelector("digiclock")
+        var hours = time.getHours().toString()
+        var minutes = time.getMinutes()
+        if(minutes<10){
+          minutes = "0"+minutes.toString()
+        } else{
+          minutes = minutes.toString()
+        }
+        clock.innerHTML = hours+":"+minutes
+        var time = new Date();
+        var day = time.getDate().toString()
+        var month = String(time.getMonth()+1)
+        var year = time.getFullYear().toString()
+        var dateobj = document.querySelector("date")
+        dateobj.innerHTML = month+"/"+day+"/"+year
+      })
+    </script>
+  </body>
+</html>

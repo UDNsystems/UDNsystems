@@ -1,0 +1,34 @@
+# App translations
+UDNAPP_test=test;
+UDNAPP_SussyBaka=SussyBaka;
+UDNAPP_HEXEc=HEXEc;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=UDN;
+UDNAPP_credits=credits;
+UDNAPP_terminal=Terminal;
+UDNAPP_UDNVM=udnVM;
+UDNAPP_Settings=Settings;
+UDNAPP_InvDuck VM=InvDuck VM;
+UDNAPP_applauncher=App Launcher;
+UDNAPP_discord=discord;
+UDNAPP_UD-Explorer=UD-Explorer;
+# App Content translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGU9ImZvbnQtZmFtaWx5Om1vbm9zcGFjZTsiPkNvZGVkIGJ5OiA8L2JyPkNvZGVyKCkgKEBGb3g1NTEpPC9icj5OaWNlanNpc2Nvb2wgKEBUQlNoYXJlZEFjY291bnQpPC9icj5TdXNzeSAoQGFicnVodXNlcik8L2JyPlBvbmFsaSAoQFBvbmFsaSk8L2JyPjwvYnI+TWFkZSBJY29uczo8L2JyPk5UX0NhdCAobWFkZSBpY29uIGNhbGxlZCBjbG91ZGR1Y2ssIHdlIHdlcmUgYWxsb3dlZCB0byB1c2UgaXQpPGJyLz5Db2RlcigpIChARm94NTUxKSAobWluZSBhcmUgYmFkKTxici8+TGFuZ3VhZ2VzIG1hZGUgYnk6PGJyLz5NYWdlc3RpY2sgKEBOaXh0cm9tZSk8L2JyPlNkZiAoQG1rY29kZXMpPC9icj5TdXNzeSAoQGFicnVodXNlcik8YnIvPk5pY2Vqc2lzY29vbCAoQFRCU2hhcmVkQWNjb3VudCk8YnIvPkNvZGVyKCkgKEBGb3g1NTEp;
+UATitle_credits=Credits;
+UATitle_changelanguage=Change Language;
+UATitle_terminal=Terminal;
+UATitle_invduck=InvDuck;
+UATitle_aclidenix=Aclidenix Music Player;
+# Text translations
+apply=Apply;
+langsel=Select your language.;
+error=Error:;
+apps=Apps;
+on=On;
+off=Off;
+confirmation=Confirmation;
+# Settings
+UDNCFG_langchanger=Change Language;
+UDNCFG_enableSussyBakaMode=SussyBaka;
+UDNCFG_quickboot=Quick Boot;
+UDNCFG_themes=Change Themes;

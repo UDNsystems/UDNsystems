@@ -1,0 +1,33 @@
+# App translations
+UDNAPP_test=ℸ ̣ ᒷᓭℸ ̣;
+UDNAPP_SussyBaka=ᓭ⚍ᓭᓭ||ʖᔑꖌᔑ;
+UDNAPP_HEXEc=⍑ᒷ ̇/ᒷᓵ;
+UDNAPP_WIN96=∴╎リ96;
+UDNAPP_UDN=⚍↸リ;
+UDNAPP_credits=ᓵ∷ᒷ↸╎ℸ ̣ ᓭ;
+UDNAPP_terminal=ℸ ̣ ᒷ∷ᒲ╎リᔑꖎ;
+UDNAPP_UDNVM=⚍↸リ⍊ᒲ;
+UDNAPP_Settings=ᓭᒷℸ ̣ ℸ ̣ ╎リ⊣ᓭ;
+UDNAPP_InvDuck VM=╎リ⍊↸⚍ᓵꖌ ⍊ᒲ;
+UDNAPP_applauncher=ᔑ!¡!¡ ꖎᔑ⚍リᓵ⍑ᒷ∷;
+UDNAPP_discord=↸╎ᓭᓵ𝙹∷↸;
+UDNAPP_UD-Explorer=⚍↸-ᒷ ̇/!¡ꖎ𝙹∷ᒷ∷;
+# App Content translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGU9ImZvbnQtZmFtaWx5Om1vbm9zcGFjZTsiPkNvZGVkIGJ5OiA8L2JyPkNvZGVyKCkgKEBGb3g1NTEpPC9icj5OaWNlanNpc2Nvb2wgKEBUQlNoYXJlZEFjY291bnQpPC9icj5TdXNzeSAoQGFicnVodXNlcik8L2JyPlBvbmFsaSAoQFBvbmFsaSk8L2JyPjwvYnI+TWFkZSBJY29uczo8L2JyPk5UX0NhdCAobWFkZSBpY29uIGNhbGxlZCBjbG91ZGR1Y2ssIHdlIHdlcmUgYWxsb3dlZCB0byB1c2UgaXQpPGJyLz5Db2RlcigpIChARm94NTUxKSAobWluZSBhcmUgYmFkKTxici8+TGFuZ3VhZ2VzIG1hZGUgYnk6PGJyLz5NYWdlc3RpY2sgKEBOaXh0cm9tZSk8L2JyPlNkZiAoQG1rY29kZXMpPC9icj5TdXNzeSAoQGFicnVodXNlcik8YnIvPk5pY2Vqc2lzY29vbCAoQFRCU2hhcmVkQWNjb3VudCk8YnIvPkNvZGVyKCkgKEBGb3g1NTEp;
+UATitle_credits=ᓵ∷ᒷ↸╎ℸ ̣ ᓭ;
+UATitle_changelanguage=ᓵ⍑ᔑリ⊣ᒷ ꖎᔑリ⊣⚍ᔑ⊣ᒷ;
+UATitle_terminal=ℸ ̣ ᒷ∷ᒲ╎リᔑꖎ;
+UATitle_invduck=╎リ⍊↸⚍ᓵꖌ;
+UATitle_aclidenix=Aᓵꖎ╎↸ᒷリ╎ ̇/ m⚍ᓭ╎ᓵ pꖎᔑ||ᒷ∷;
+# Text translations
+apply=ᔑ!¡!¡ꖎ||;
+langsel=ᓭᒷꖎᒷᓵℸ ̣  ||𝙹⚍∷ ꖎᔑリ⊣⚍ᔑ⊣ᒷ.;
+error=ᒷ∷∷𝙹∷:;
+apps=ᔑ!¡!¡ᓭ;
+on=𝙹リ;
+off=𝙹⎓⎓;
+confirmation=ᓵ𝙹リ⎓╎∷ᒲᔑℸ ̣ ╎𝙹リ;
+# Settings
+UDNCFG_langchanger=ᓵ⍑ᔑリ⊣ᒷ ꖎᔑリ⊣⚍ᔑ⊣ᒷ;
+UDNCFG_enableSussyBakaMode=ᓭ⚍ᓭᓭ||ʖᔑꖌᔑ;
+UDNCFG_quickboot=ᑑ⚍╎ᓵꖌ ʖ𝙹𝙹ℸ ̣;

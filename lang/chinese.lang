@@ -1,0 +1,33 @@
+# App translations
+UDNAPP_test=测试;
+UDNAPP_SussyBaka=苏西巴卡;
+UDNAPP_HEXEc=HEXEc;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=UDN;
+UDNAPP_credits=学分;
+UDNAPP_terminal=终端机;
+UDNAPP_UDNVM=UDN虚拟机;
+UDNAPP_Settings=设置;
+UDNAPP_InvDuck VM=倒置鸭VM;
+UDNAPP_applauncher=应用启动器;
+UDNAPP_discord=不和谐;
+UDNAPP_UD-Explorer=UD-探险家;
+# App Content translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGU9ImZvbnQtZmFtaWx5Om1vbm9zcGFjZTsiPue8luegge+8mjwvYnI+Q29kZXIoKSAoQEZveDU1MSk8L2JyPk5pY2Vqc2lzY29vbCAoQFRCU2hhcmVkQWNjb3VudCk8L2JyPlN1c3N5IChAYWJydWh1c2VyKTwvYnI+UG9uYWxpIChAUG9uYWxpKTwvYnI+PC9icj7liLbkvZzlm77moIfvvJo8L2JyPk5UX0NhdO+8iOWItuS9nOWQjeS4uiBjbG91ZGR1Y2sg55qE5Zu+5qCH77yM5oiR5Lus6KKr5YWB6K645L2/55So5a6D77yJPGJyLz5Db2RlcigpIChARm94NTUxKe+8iOaIkeeahOS4jeWlve+8iTwgYnIvPuivreiogOWItuS9nOiAhe+8mjxici8+TWFnZXN0aWNrIChATml4dHJvbWUpPC9icj5TZGYgKEBta2NvZGVzKTwvYnI+U3Vzc3kgKEBhYnJ1aHVzZXIpPGJyLz5OaWNlanNpc2Nvb2wgKEBUQlNoYXJlZEFjY291bnQpPGJyLz5Db2RlcigpIChARm94NTUxKQ;
+UATitle_credits=学分;
+UATitle_changelanguage=更改语言;
+UATitle_terminal=终端机;
+UATitle_invduck=倒置鸭;
+UATitle_aclidenix=Aclidenix 音樂播放器;
+# Text translations
+apply=申请;
+langsel=选择您的语言。;
+error=错误:;
+apps=应用程序;
+on=上;
+off=关闭;
+confirmation=确认;
+# Settings
+UDNCFG_langchanger=更改语言;
+UDNCFG_enableSussyBakaMode=苏西巴卡;
+UDNCFG_quickboot=快速启动;

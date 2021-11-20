@@ -1,0 +1,33 @@
+# App translations
+UDNAPP_test=テスト;
+UDNAPP_SussyBaka=スーシーバカ;
+UDNAPP_HEXEc=HEXEc;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=UDN;
+UDNAPP_credits=クレジット;
+UDNAPP_terminal=ターミナル;
+UDNAPP_UDNVM=UDN仮想マシン;
+UDNAPP_Settings=設定;
+UDNAPP_InvDuck VM=InvDuck VM;
+UDNAPP_applauncher=アプリランチャー;
+UDNAPP_discord=Discord;
+UDNAPP_UD-Explorer=UD-エクスプローラ;
+# App Content translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGUgPSAiZm9udC1mYW1pbHnvvJptb25vc3BhY2U7Ij7jgrPjg7zjg4nvvJo8L2JyPiBDb2Rlcu+8iO+8ie+8iEAgRm94NTUx77yJPC9icj4gTmljZWpzaXNjb29s77yIQFRCU2hhcmVkQWNjb3VudO+8iTwvYnI+IFN1c3N577yIQGFicnVodXNlcu+8iTwvYnI+44Od44OK44OqIO+8iEBQb25hbGnvvIk8L2JyPiA8L2JyPuS9nOaIkOOBleOCjOOBn+OCouOCpOOCs+ODs++8mjwvYnI+IE5UX0NhdO+8iGNsb3VkZHVja+OBqOWRvOOBsOOCjOOCi+S9nOaIkOOBleOCjOOBn+OCouOCpOOCs+ODs+OAgeS9v+eUqOOCkuioseWPr+OBleOCjOOBvuOBl+OBn++8iTxici8+IENvZGVy77yI77yJ77yIQCBGb3g1NTHvvInvvIjnp4Hjga7jgoLjga7jga/mgqrjgYTjgafjgZnvvIk8IGJyIC8+5L2c5oiQ6ICF44Gu6KiA6Kqe77yaPGJyLz4gTWFnZXN0aWNr77yIQE5peHRyb21l77yJPC9icj4gU2Rm77yIQG1rY29kZXPvvIk8L2JyPiBTdXNzee+8iEBhYnJ1aHVzZXLvvIk8YnIvPiBOaWNlanNpc2Nvb2zvvIhAVEJTaGFyZWRBY2NvdW5077yJPGJyLz4gQ29kZXLvvIjvvIkg77yIQCBGb3g1NTHvvIk;
+UATitle_credits=クレジット;
+UATitle_changelanguage=言語を変更;
+UATitle_terminal=ターミナル;
+UATitle_invduck=InvDuck;
+UATitle_aclidenix=Aclidenix 音楽プレーヤー;
+# Text translations
+apply=適用する;
+langsel=言語を選択します。;
+error=エラー:;
+apps=アプリ;
+on=オン;
+off=オフ;
+confirmation=確認;
+# Settings
+UDNCFG_langchanger=言語を変更;
+UDNCFG_enableSussyBakaMode=スーシーバカ;
+UDNCFG_quickboot=クイックブート;

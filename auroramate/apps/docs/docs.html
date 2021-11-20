@@ -1,0 +1,38 @@
+<html>
+  <head></head>
+  <body>
+    <h1>Apps</h1>
+    To make an app you need to make a function containing your code and also requires an argument called "ev".<br>
+    This is the event argument for when somebody clicks your app.<br>
+    Next you need to register your app by calling registerApp which looks like this <em>App(name, icon, func)</em><br>
+    Lets break that down<br>
+    <br>So argument <em>name</em> would be the displayed name of the app on the desktop, argument <em>icon</em> is used to set the icon, you can check out all the icons if you go to the replit page and navigate to <em>content/appicons</em> just enter in the filename, and as last argument <em>func</em>. This argument requires the function (but not called).<br><h2>Example (idk how to indent)</h2>
+    <em>
+      def test(ev):<br>
+        Win("test", "it works!", 200, 200)
+      registerApp(<br>
+      App(<br>
+          "test",
+          "default.jpg",
+          test
+          <br>
+        )<br>
+      )
+    </em>
+    <h1>Windows</h1>
+    You probably saw the Win() function used in the previous example, that is used to make windows appear.<br>
+    This one will be ALOT shorter. So anyways the Win() function requires 4 arguments and returns itself (even though you never would use an already defined Window object)<br>
+    First argument is the <em>title</em> argument, i dont think i have the expplain what this does.<br>
+    The second argumet is the <em>content</em> argument,
+    this is the inner html of your window.<br>
+    The third and fourth are width and height.
+    <h2>Example</h2>
+    Win("test", "IT WORKS >:D", 200, 200)
+    <h1>Popups</h1>
+    Popups are basicly windows but width and height are hard coded and another argument has been added called "popupType", it is a string and has to be "Error" (for an error popup), "Info" (an information popup) or "Warning" (a warning popup).<br>
+    It looks like this: <em>Popup(title, popupType, content)
+      </em><br>
+    <h2>Example</h2>
+    Popup("SUS WARNING!", "Warning", "You are entering the sus zone!")
+  </body>
+</html>

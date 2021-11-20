@@ -1,0 +1,33 @@
+# App translations
+UDNAPP_test=тест;
+UDNAPP_SussyBaka=SussyBaka;
+UDNAPP_HEXEc=HEXEc;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=UDN;
+UDNAPP_credits=Авторы;
+UDNAPP_terminal=Терминал;
+UDNAPP_UDNVM=Виртуальная машина UDN;
+UDNAPP_Settings=Настройки;
+UDNAPP_InvDuck VM=InvDuck VM;
+UDNAPP_applauncher=Программа запуска приложений;
+UDNAPP_discord=discord;
+UDNAPP_UD-Explorer=UD-Проводник;
+# App Content translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGUgPSAiZm9udC1mYW1pbHk6IG1vbm9zcGFjZTsiPiDQmtC+0LTQuNGA0YPQtdGCOiA8L2JyPiBDb2RlciAoKSAoQCBGb3g1NTEpIDwvYnI+IE5pY2Vqc2lzY29vbCAoQFRCU2hhcmVkQWNjb3VudCkgPC9icj4gU3Vzc3kgKEBhYnJ1aHVzZXIpIDwvYnI+IFBvbmFsaSAoQFBvbmFsaSkgPC9icj4gPC9icj4g0KHQtNC10LvQsNC7INC40LrQvtC90LrQuDogPC9icj4gTlRfQ2F0ICjRgdC00LXQu9Cw0Lsg0LjQutC+0L3QutGDIGNsb3VkZHVjaywg0L3QsNC8INGA0LDQt9GA0LXRiNC40LvQuCDQtdC1INC40YHQv9C+0LvRjNC30L7QstCw0YLRjCkgPGJyLz4gQ29kZXIgKCkgKEAgRm94NTUxKSAo0YMg0LzQtdC90Y8g0L/Qu9C+0YXQuNC1KSA8IGJyIC8+INCv0LfRi9C60Lg6IDxici8+IE1hZ2VzdGljayAoQE5peHRyb21lKSA8L2JyPiBTZGYgKEBta2NvZGVzKSA8L2JyPiBTdXNzeSAoQGFicnVodXNlcikgPGJyLz4gTmljZWpzaXNjb29sIChAVEJTaGFyZWRBY2NvdW50KSA8YnIvPiBDb2RlciAoKSAoQCBGb3g1NTEp;
+UATitle_credits=Авторы;
+UATitle_changelanguage=Изменить язык;
+UATitle_terminal=Терминал;
+UATitle_invduck=InvDuck;
+UATitle_aclidenix=Aclidenix музыкальный проигрыватель;
+# Text translations
+apply=Применить;
+langsel=Выберите ваш язык.;
+error=Ошибка:;
+apps=Приложения;
+on=Включить;
+off=Выключить;
+confirmation=Подтверждение;
+# Settings
+UDNCFG_langchanger=Изменить язык;
+UDNCFG_enableSussyBakaMode=SussyBaka;
+UDNCFG_quickboot=Быстрая загрузка;

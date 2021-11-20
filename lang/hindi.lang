@@ -1,0 +1,36 @@
+# App translations
+UDNAPP_test=तेस्त ;
+UDNAPP_SussyBaka=सस्सिबाका;
+UDNAPP_HEXEc=हेक्सेक;
+UDNAPP_WIN96=विन९६;
+UDNAPP_UDN=उद्न;
+UDNAPP_credits=क्रेडिटस;
+UDNAPP_terminal=टर्मिनल;
+UDNAPP_UDNVM=उद्न VM; # (udna VM)
+UDNAPP_Settings=सेटिंग्स;
+UDNAPP_InvDuck VM=इनव्दक VM;
+UDNAPP_applauncher=एप शुरू  करने  वाला;
+UDNAPP_discord=डिस्कोर्ड;
+UDNAPP_UD-Explorer=UD-एक्सप्लोरर;
+# App Contenडिस्कोर्डtions
+UAContent_credits=base64:PGR1Y2sgc3R5bGU9ImZvbnQtZmFtaWx5Om1vbm9zcGFjZTsiPiDgpKbgpY3gpLXgpL7gpLDgpL4g4KSV4KWL4KSh4KS/4KSkOiA8L2JyPkNvZGVyKCkgKEBGb3g1NTEpPC9icj5OaWNlanNpc2Nvb2wgKEBUQlNoYXJlZEFjY291bnQpPC9icj5zdXNzeSAoQGFicnVodXNlcik8L2JyPnBvbmFsaSAoQFBvbmFsaSk8L2JyPjwvYnI+4KSu4KWH4KShIOCkhuCkh+CkleClieCkqDo8L2JyPk5UX0NhdCAo4KSV4KWN4KSy4KS+4KSJ4KSh4KSh4KSVIOCkqOCkvuCkriDgpJXgpL4g4KSs4KSo4KS+IOCkhuCkh+CkleClieCkqCwg4KS54KSu4KWH4KSCIOCkh+CkuOCkleCkviDgpIfgpLjgpY3gpKTgpYfgpK7gpL7gpLIg4KSV4KSw4KSo4KWHIOCkleClgCDgpIfgpJzgpL7gpJzgpKQg4KSl4KWAKTxici8+Q29kZXIoKSAoQEZveDU1MSkgKOCkruClh+CksOCkviDgpJbgpLDgpL7gpKwg4KS54KWIKTwgYnIvPiDgpKbgpY3gpLXgpL7gpLDgpL4g4KSs4KSo4KS+4KSIIOCkl+CkiCDgpK3gpL7gpLfgpL7gpI/gpII6PGJyLz5NYWdlc3RpY2sgKEBOaXh0cm9tZSk8L2JyPlNkZiAoQG1rY29kZXMpPC9icj5zdXNzeSAoQGFicnVodXNlcik8YnIvPk5pY2Vqc2lzY29vbCAoQFRCU2hhcmVkQWNjb3VudCk8YnIvPkNvZGVyKCkgKEAgRm94NTUxKQ;
+UATitle_credits=क्रेडिटस;
+UATitle_changelanguage=भाषा बदलें;
+UATitle_terminal=टर्मिनल;
+UATitle_invduck=इनव ड्क ;
+UATitle_aclidenix=Aclidenix संगीत बजाने वाला;
+# Text translations
+apply=लागू;
+langsel=भाषा बदलें;
+error=कुछ गलत हुआ हैं:;
+# something wen't wrong is the text, no word for error
+apps=Appोंं;
+on=खुला;
+off=बंद;
+# same words for Open and Closed 
+confirmation=रचना;
+# usewd google translate
+# Settings
+UDNCFG_langchanger=भाषा बदलें;
+UDNCFG_enableSussyBakaMode=सस्सि बाका;
+UDNCFG_quickboot=जल्दी Boot;

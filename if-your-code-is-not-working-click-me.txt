@@ -1,0 +1,4 @@
+Did you compile the ducking scss?
+If not go to the ducking shell and type:
+./build.sh
+(you might need to do `chmod +x build.sh`)

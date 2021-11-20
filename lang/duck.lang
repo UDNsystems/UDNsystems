@@ -1,0 +1,33 @@
+# App translations
+UDNAPP_test=ducktest;
+UDNAPP_SussyBaka=SussyDuck;
+UDNAPP_HEXEc=HEXDuck;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=Duck;
+UDNAPP_credits=Ducks;
+UDNAPP_terminal=DuckTerminal;
+UDNAPP_UDNVM=DuckVM;
+UDNAPP_Settings=Duckings;
+UDNAPP_InvDuck VM=InvDuck VM;
+UDNAPP_applauncher=Duck Launcher;
+UDNAPP_discord=Duckcord;
+UDNPP_UD-Explorer=UD-Duck;
+# App Content translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGU9ImZvbnQtZmFtaWx5Om1vbm9zcGFjZTsiPmR1Y2sgZHVjazogPC9icj5Db2RlcigpIChARm94NTUxKTwvYnI+TmljZWpzaXNjb29sIChAVEJTaGFyZWRBY2NvdW50KTwgL2JyPlN1c3N5IChAYWJydWh1c2VyKTwvYnI+UG9uYWxpIChAUG9uYWxpKTwvYnI+PC9icj5kdWNrIGR1Y2s6PC9icj5OVF9DYXQgKGR1Y2sgZHVjayBkdWNrIGNsb3VkZHVjaywgZHVjayBkdWNrIGR1Y2sgZHVjayBkdWNrIGR1Y2spPGJyLz5Db2RlcigpIChARm94NTUxKShkdWNrIGR1Y2sgZHVjayk8YnIvPmR1Y2sgZHVjayBkdWNrOjxici8+TWFnZXN0aWNrIChATml4dHJvbWUpPC9icj5TZGYgKEBta2NvZGVzKTwvYnI+U3Vzc3kgKEBhYnJ1aHVzZXIpPGJyLz5OaWNlanNpc2Nvb2wgKEBUQlNoYXJlZEFjY291bnQpPGJyLz5Db2RlcigpIChARm94NTUxKQ;
+UATitle_credits=Ducks;
+UATitle_changelanguage=Duck Language;
+UATitle_terminal=DuckTerminal;
+UATitle_invduck=InvDuck;
+UATitle_aclidenix=Aclidenix Duck Player;
+# Text translations
+apply=Duckply;
+langsel=Quack your language.;
+error=Sad duck:;
+apps=Quacks;
+on=On;
+off=Off;
+confirmation=Duck Confirmation;
+# Settings
+UDNCFG_langchanger=Duck Language;
+UDNCFG_enableSussyBakaMode=SussyDuck;
+UDNCFG_quickboot=Quack Duck;

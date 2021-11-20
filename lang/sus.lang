@@ -1,0 +1,31 @@
+# App translations
+UDNAPP_test=duck;
+UDNAPP_HEXEc=HSUSc;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=URSUS;
+UDNAPP_credits=suser;
+UDNAPP_terminal=sus.exe;
+UDNAPP_UDNVM=URSUS_VM;
+UDNAPP_Settings=DuckThings;
+UDNAPP_InvDuck VM=SussyBaka WebOS;
+UDNAPP_discord=suscord;
+UDNAPP_UD-Explorer=UD-Susplorer;
+# App Content translations
+UATitle_credits=suser;
+UATitle_changelanguage=Sus Language;
+UATitle_terminal=sus.exe;
+UATitle_invduck=InvSuS;
+UATitle_aclidenix=Aclidenix Sus Player;
+# Text translations
+apply=nope.;
+langsel=Duck language.;
+error=ducked up:;
+apps=appduck;
+confirmation=sus it;
+on=On;
+off=Off;
+# Settings
+UDNCFG_langchanger=Sus Language;
+UDNCFG_enableSussyBakaMode=SussyBaka;
+UDNCFG_quickboot=DUCK Boot;
+UDNCFG_themes=SUS Themes!!;

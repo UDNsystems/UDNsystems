@@ -1,0 +1,33 @@
+# App translations
+UDNAPP_test=시험;
+UDNAPP_SussyBaka=수시바카;
+UDNAPP_HEXEc=HEXEc;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=UDN;
+UDNAPP_credits=크레딧;
+UDNAPP_terminal=터미널;
+UDNAPP_UDNVM=UDN가상 머신;
+UDNAPP_Settings=설정;
+UDNAPP_InvDuck VM=인비오리 VM;
+UDNAPP_applauncher=앱 실행기;
+UDNAPP_discord=Discord;
+UDNAPP_UD-Explorer=UD-탐색기;
+# App Content translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGU9ImZvbnQtZmFtaWx5Om1vbm9zcGFjZTsiPuy9lOuTnDogPC9icj5Db2RlcigpKEBGb3g1NTEpPC9icj5OaWNlanNpc2Nvb2woQFRCU2hhcmVkQWNjb3VudCk8L2JyPlN1c3N5KEBhYnJ1aHVzZXIpPC9icj5Qb25hbGkgKEBQb25hbGkpPC9icj48L2JyPuyVhOydtOy9mCDrp4zrk6TquLA6PC9icj5OVF9DYXQoY2xvdWRkdWNr7J20652864qUIOyVhOydtOy9mOydhCDrp4zrk6Tsl4jsnLzrqbAg7IKs7Jqp7J20IO2XiOyaqeuQmOyXiOyKteuLiOuLpCk8YnIvPkNvZGVyKCkoQEZveDU1MSko64K0IOqyg+ydgCDsoovsp4Ag7JWK7Iq164uI64ukKTwgYnIvPuyWuOyWtDo8YnIvPk1hZ2VzdGljayhATml4dHJvbWUpPC9icj5TZGYoQG1rY29kZXMpPC9icj5TdXNzeShAYWJydWh1c2VyKTxici8+TmljZWpzaXNjb29sKEBUQlNoYXJlZEFjY291bnQpPGJyLz5Db2RlcigpIChARm94NTUxKQ;
+UATitle_credits=크레딧;
+UATitle_changelanguage=언어 변경;
+UATitle_terminal=터미널;
+UATitle_invduck=인비오리;
+UATitle_aclidenix=Aclidenix 음악 플레이어;
+# Text translations
+apply=적용;
+langsel=언어를 선택하십시오.;
+error=오류:;
+apps=앱;
+on=에;
+off=꺼짐;
+confirmation=확인;
+# Settings
+UDNCFG_langchanger=언어 변경;
+UDNCFG_enableSussyBakaMode=수시바카;
+UDNCFG_quickboot=빠른 부팅;

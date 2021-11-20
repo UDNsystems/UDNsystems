@@ -1,0 +1,45 @@
+$default-font: Arial, Helvetica, sans-serif;
+$button-border: rgb(15, 94, 94);
+@mixin DefaultButton($bg,$border) {
+	background: $bg;
+	border: $border;
+	padding: 2px;
+	text-decoration: none;
+	color: black;
+	font-family: $default-font;
+	font-size: 90%;
+}
+.btn {
+	&:link {
+		@include DefaultButton(cyan,$button-border);
+	}
+	&:visited {
+		@include DefaultButton(cyan,$button-border);
+	}
+	&:hover {
+		@include DefaultButton(rgb(31, 226, 226),$button-border);
+	}
+	&:active {
+		@include DefaultButton(rgb(56, 182, 182),$button-border);
+	}
+}
+.round {
+	border-radius: 5px;
+}
+.link {
+	&:link {
+		color: blue;
+		text-decoration: none;
+		font-family: $default-font;
+	}
+	&:visited {
+		color: blue;
+		text-decoration: none;
+		font-family: $default-font;
+	}
+	&:active {
+		color: red;
+		text-decoration: none;
+		font-family: $default-font;
+	}
+}

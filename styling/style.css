@@ -1,0 +1,252 @@
+.btn:link {
+  background: cyan;
+  border: #0f5e5e;
+  padding: 2px;
+  text-decoration: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 90%;
+}
+.btn:visited {
+  background: cyan;
+  border: #0f5e5e;
+  padding: 2px;
+  text-decoration: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 90%;
+}
+.btn:hover {
+  background: #1fe2e2;
+  border: #0f5e5e;
+  padding: 2px;
+  text-decoration: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 90%;
+}
+.btn:active {
+  background: #38b6b6;
+  border: #0f5e5e;
+  padding: 2px;
+  text-decoration: none;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 90%;
+}
+
+.round {
+  border-radius: 5px;
+}
+
+.link:link {
+  color: blue;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.link:visited {
+  color: blue;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.link:active {
+  color: red;
+  text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.font {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background-color: black;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  overflow: hidden;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.focused {
+  z-index: 5;
+}
+
+.unfocused {
+  z-index: 2;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+#windows-content-Terminal {
+  color: #00FF00;
+  background-color: #000000;
+  font-family: monospace;
+}
+
+.app-containers {
+  margin: 10px;
+  display: inline-block;
+}
+.app-containers > button {
+  background-color: #c9c3c3;
+  padding: 10px;
+  border: 5px solid black;
+  cursor: pointer;
+  /* outline: 5px solid black; */
+}
+
+.app-icon {
+  display: inline-block;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.app-text {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+.app-close-button {
+  /* display: inline-block; */
+  color: white;
+  background: red;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  padding: 5px 10px;
+  float: right;
+}
+
+.app-minimize-button {
+  /* display: inline-block; */
+  color: white;
+  background: blue;
+  font-family: Arial, Helvetica, sans-serif;
+  cursor: pointer;
+  padding: 5px 10px;
+  float: right;
+}
+
+.app-close-button:hover {
+  background: #990707;
+}
+
+.app-close-button:hover {
+  background: #000085;
+}
+
+.app-containers > button:hover {
+  background: #756865;
+}
+
+.apps {
+  width: 60px;
+  height: 60px;
+}
+
+#taskbar {
+  position: absolute;
+  z-index: 20;
+  border: 2px solid black;
+  background-color: #707070;
+  width: 100%;
+  height: 20px;
+  top: calc(100% - 20px);
+}
+
+.popup-icon {
+  width: 60px;
+  height: 65px;
+}
+
+#icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 10;
+  /* make sure it doesn't overlap */
+}
+
+#startbtn {
+  position: relative;
+  float: left;
+  margin-right: 5px;
+}
+
+.taskbar-win-obj {
+  float: left;
+  background-color: #403e3e;
+  outline: 2px solid black;
+  margin-right: 5px;
+  color: white;
+  position: relative;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.taskbar-win-obj:hover {
+  background-color: #00FFFF;
+}
+
+.windows-top {
+  position: absolute;
+  height: 30px;
+  width: 100px;
+  bottom: 5px;
+  background-color: cyan;
+  outline: 5px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.windows-content {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-color: white;
+  outline: 5px solid black;
+  -moz-user-select: text;
+  -webkit-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.windows {
+  position: absolute;
+  left: 50%;
+  right: 50%;
+}
+
+#start-menu {
+  position: absolute;
+  z-index: 10;
+  animation: opening 0.2s linear;
+  height: 50vh;
+  background-color: bisque;
+  float: left;
+  transform: translateY(50vh);
+}
+
+@keyframes opening {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(50vh);
+  }
+}
+
+/*# sourceMappingURL=style.css.map */

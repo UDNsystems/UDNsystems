@@ -1,0 +1,32 @@
+# App translations
+UDNAPP_terminal=opdrachtprompt;
+UDNAPP_test=test;
+UDNAPP_SussyBaka=SussyBaka;
+UDNAPP_HEXEc=HEXEc;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=UDN besturing;
+UDNAPP_credits=helpers;
+UDNAPP_UDNVM=udnVM;
+UDNAPP_Settings=Instellingen;
+UDNAPP_InvDuck VM=InvDuck;
+UDNAPP_discord=discord;
+UDNAPP_UD-Explorer=UD-Verkenner;
+# Text translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGU9ImZvbnQtZmFtaWx5Om1vbm9zcGFjZTsiPkdlY29kZWVyZCBkb29yOiA8L2JyPkNvZGVyKCkgKEBGb3g1NTEpPC9icj5OaWNlanNpc2Nvb2wgKEBUQlNoYXJlZEFjY291bnQpPC9icj5TdXNzeSAoQGFicnVodXVzZXIpPC9icj5Qb25hbGkgKEBQb25hbGkpPC9icj48L2JyPlBpY3RvZ3JhbW1lbiBnZW1hYWt0OjwvYnI+TlRfQ2F0IChwaWN0b2dyYW0gZ2VtYWFrdCBtZXQgZGUgbmFhbSBjbG91ZGR1Y2ssIHdlIG1vY2h0ZW4gaGV0IGdlYnJ1aWtlbik8YnIvPkNvZGVyKCkgKEBGb3g1NTEpIChkZSBtaWpuZSB6aWpuIHNsZWNodCk8IGJyLz5UYWxlbiBnZW1hYWt0IGRvb3I6PGJyLz5NYWdlc3RpY2sgKEBOaXh0cm9tZSk8L2JyPlNkZiAoQG1rY29kZXMpPC9icj5TdXNzeSAoQGFicnVodXVzZXIpPGJyLz5OaWNlanNpc2Nvb2wgKEBUQlNoYXJlZEFjY291bnQpPGJyLz5Db2RlcigpIChARm94NTUxKQ;
+UATitle_credits=Helpers;
+UATitle_changelanguage=Taal veranderen;
+UATitle_terminal=Opdrachtprompt;
+UATitle_invduck=InvDuck;
+UATitle_aclidenix=Aclidenix muziekspeler;
+# Text translations
+apply=Toepassen;
+langsel=Selecteer je taal.;
+error=Fout:;
+apps=Apps;
+on=On;
+off=Off;
+confirmation=Bevestiging;
+# Settings
+UDNCFG_langchanger=Taal wijzigen;
+UDNCFG_enableSussyBakaMode=SussyBaka;
+UDNCFG_quickboot=Quick Boot;

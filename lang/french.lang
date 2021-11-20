@@ -1,0 +1,31 @@
+# App translations
+UDNAPP_terminal=Terminal;
+UDNAPP_test=Test;
+UDNAPP_SussyBaka=SussyBaka;
+UDNAPP_HEXEc=HEXEc;
+UDNAPP_WIN96=WIN96;
+UDNAPP_UDN=UDN;
+UDNAPP_credits=crédits;
+UDNAPP_UDNVM=Machine Virtuelle UDN;
+UDNAPP_Settings=Paramètres;
+UDNAPP_InvDuck VM=InvDuck;
+UDNAPP_discord=Notre Serveur Discord;
+UDNAPP_UD-Explorer=UD-Explorer;
+# Text translations
+UAContent_credits=base64:PGR1Y2sgc3R5bGU9ImZvbnQtZmFtaWx5Om1vbm9zcGFjZTsiPkNvZMOpIHBhcsKgOiA8L2JyPkNvZGVyKCkgKEBGb3g1NTEpPC9icj5OaWNlanNpc2Nvb2wgKEBUQlNoYXJlZEFjY291bnQpPC9icj5TdXNzeSAoQGFicnVodXNlcik8L2JyPlBvbmFsaSAoQFBvbmFsaSk8L2JyPjwvYnI+SWPDtG5lcyBjcsOpw6llc8KgOjwvYnI+TlRfQ2F0IChpY8O0bmUgY3LDqcOpZSBhcHBlbMOpZSBjbG91ZGR1Y2ssIG5vdXMgYXZvbnMgw6l0w6kgYXV0b3Jpc8OpcyDDoCBsJ3V0aWxpc2VyKTxici8+Q29kZXIoKSAoQEZveDU1MSkgKGxlcyBtaWVucyBzb250IG1hdXZhaXMpPCBici8+TGFuZ3VlcyBjcsOpw6llcyBwYXLCoDo8YnIvPk1hZ2VzdGljayAoQE5peHRyb21lKTwvYnI+U2RmIChAbWtjb2Rlcyk8L2JyPlN1c3N5IChAYWJydWh1c2VyKTxici8+TmljZWpzaXNjb29sIChAVEJTaGFyZWRBY2NvdW50KTxici8+Q29kZXIoKSAoQEZveDU1MSk;
+UATitle_credits=crédits;
+UATitle_changelanguage=Change de langage;
+UATitle_terminal=Terminal;
+UATitle_invduck=InvDuck;
+# Text translations
+apply=Appliquer;
+langsel=Selectionne ton langage.;
+error=Erreur:;
+apps=Applications;
+on=Activé;
+off=Desactivé;
+confirmation=Confirmation;
+# Settings
+UDNCFG_langchanger=Change de Langage;
+UDNCFG_enableSussyBakaMode=SussyBaka;
+UDNCFG_quickboot=Démmarage Rapide;
