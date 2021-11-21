@@ -1,5 +1,4 @@
 # version alpha v0.8a
-# This is a commit test, feel free to ignore this bit of code...
 
 from browser import document, html, window
 from browser.local_storage import storage
