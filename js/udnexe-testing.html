@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --default-font: Arial;
+    }
+    .memoryCell {
+      margin: auto 10px;
+      font-family: var(--default-font);
+    }
+    .memoryViewer {
+      max-height: 10%;
+      height: 10%;
+      max-width: 100%;
+    }
+    .arial {
+      font-family: var(--default-font);
+    }
+    .error {
+      font-family: var(--default-font);
+      color: red;
+    }
+    @keyframes fadingout {
+      0% {
+        opacity: 0;
+      }
+      40% {
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
+    }
+    .fadingout {
+      animation: fadingout 3s;
+    }
+  </style>
+</head>
+<body>
+  <h3 class="arial">UDNexe memory view</h3>
+  <div id="memoryViewer" style="word-break: break-all;" class="memoryViewer"></div>
+  <br>
+  <h3 class="arial">Output</h3>
+  <div style="font-family: monospace;" id="output"></div>
+  <br><br>
+  <h3 class="arial">Tiny Doc</h3>
+  <code id="tinydoc"></code>
+  <br><br>
+  <h3 class="arial">Your program.</h3>
+  <p id="error" class="error"></p>
+  <textarea name="program" id="program" cols="50" rows="10"></textarea>
+  <button id="run">Run</button>
+  <br><br>
+  <h3 class="arial">String to byte converter</h3>
+  <input type="text" placeholder="Your string here." id="str2byte-input"/>
+  <input type="text" placeholder="Output here" id="str2byte-output"/>
+  
+  <script src="./udnexe.js"></script>
+  <script>
+    UDNexe.memory[0xf5] = 0xfffff
+    UDNexe.memory[0xf6] = 0x00000
+    UDNexe.writeStringToMemory("Arial",0xf7)
+    let currentFont = 'Arial';
+    document.getElementById('tinydoc').innerText = `Instructions:
+  0x08 <memoryAddress> <value> - writes a number to a memory address
+  0x09 <memoryAddress> <...string> - reads any following bytes as a string until a NUL(0x0) byte is found and writes to the memory address
+  0x0A <memoryAddress> - outputs a memory address value as number
+  0x0B <memoryAddress> - outputs a memory address value as a unicode char
+  0x0C <memoryAddress> - outputs a string value from memory
+  0x0D <startAddress> <finishAddress> <value> - fills memory with <value> starting from <startAddress> and ending in <finishAddress>
+  0x0E <memoryAddress> <operation> <x> <y> - Does a math operation and saves the results to <memoryAddress>, where <operation> can be any of those: 0 (+), 1 (-), 2 (*), 3 (/)
+  0x0F <position> - goto statement.
+  0x10 <ms> - sleeps for <ms>.
+  0x11 <x> <y> <gotoPosition> - AND operator
+  0x12 <x> <y> <gotoPosition> - OR operator
+  0x13 <x> <y> <gotoPosition> - EQUAL operator
+  0x14 <x> <y> <gotoPosition> - NOT EQUAL operator
+  0x15 - quit a.k.a. return
+  0x16 <x> <y> <gotoPosition> - LESS THAN operator
+  0x17 <x> <y> <gotoPosition> - HIGHER THAN operator
+  
+  Note: for all of these operators, if the condition is not met it just proceeds to the next line.
+Memory addresses (for this page won't work on normal UDN):
+  0xf4 - Unix time (miliseconds)
+  0xf5 - Background color (type: integer; default: 0xfffff)
+  0xf6 - Foreground color (type: integer; default: 0x00000)
+  0xf7 - Font family (type: string; default: Arial)
+  `
+    
+    let memoryViewer = document.querySelector('#memoryViewer');
+    //memoryViewer.style.width = `${UDNasm.memory.length * 2}px`;
+    //memoryViewer.style.height = `${UDNasm.memory.length}px`;
+    
+    function displayMemory() {
+      memoryViewer.innerHTML = "";
+      function createSpan(text) {
+        let spanEl = document.createElement('span');
+        spanEl.innerText = text;
+        spanEl.classList.add('memoryCell')
+        return spanEl;
+      }
+      for (let i = 0; i < UDNexe.memory.length; i++) {
+        let byte = UDNexe.memory[i];
+        //if (i % Math.floor(memory.length/2) === 0) memoryViewer.appendChild(document.createElement('br'));
+        memoryViewer.appendChild(createSpan(byte));
+      }
+    }
+    document.getElementById('run').onclick = function() {
+      let program = "0x0 "+document.getElementById('program').value;
+      let programBytes = program
+        .replace(/\n+/g,"\n")
+        .replace(/\n/g," ")
+        .replace(/ +/g," ")
+        .split(' ').map(x => Number(x));
+      //let {start, end} = UDNasm.writeArrayToMemory(programBytes, 0x0);
+      //UDNasm.runFromMemory(start, end);
+      UDNexe(programBytes);
+      //console.log(programBytes)
+    }
+    displayMemory();
+    setInterval(displayMemory, 1850)
+    UDNexe.stdout = function(data) {
+      document.getElementById('output').innerText += data.toString()+"\n";
+    }
+    document.getElementById('str2byte-input').onchange = function() {
+      document.getElementById('str2byte-output').value = UDNexe.stringToBytes(document.getElementById('str2byte-input').value).join(' ');
+    }
+    UDNexe.error = function(data) {
+      let errSpan = document.createElement('span');
+      errSpan.classList.add('fadingout');
+      errSpan.innerText = data+"\n";
+      document.getElementById('error').appendChild(errSpan);
+      setTimeout(_ => errSpan.remove(), 3000)
+    }
+    setInterval(() => {
+      document.body.style.backgroundColor = "#"+UDNexe.memory[0xf5].toString(16);
+      document.body.style.color = "#"+UDNexe.memory[0xf6].toString(16);
+      var font = UDNexe.getStringFromMemory(0xf7);
+      if (font !== currentFont) {
+        document.documentElement.style.setProperty('--default-font', font);
+        currentFont = font;
+      }
+      UDNexe.memory[0xf4] = Date.now();
+    },100)
+  </script>
+</body>
+</html>
