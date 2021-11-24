@@ -271,7 +271,3 @@ window.setupAmogusClock = function(){
     clockobj.innerHTML = combinedTime;
   })
 }
-
-window.duckAppList = function(){
-  window.execPy("appList = []")
-}

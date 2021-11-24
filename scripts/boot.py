@@ -48,10 +48,6 @@ iconElement = html.IMG()
 iconElement.attrs["src"] = "content/system/icon.jpg"
 text = html.SPAN()
 text.attrs["style"] = "font-size:18;color:#FFFFFF;font-family:Calibri;"
-# uncomment this code to enable auroramate
-# auroramate = True
-# uncommont this to enable sus
-# SUSEnabled = True # is it SUSE enabled or SUS enabled?
 if auroramate:
   text <= "Universal Duck Network AuroraMATE."
 else:
@@ -110,8 +106,8 @@ if not auroramate:
       print_col(f"failed to load {app}, check console for the error and report it to the devs!!!", "#FF0000")
   if not error:
     screen.println("Finishing up...")
-  for app in downloadedapps:
-    exec(storage[app])
+  # for app in downloadedapps:
+  #   exec(storage[app])
 else:
   screen.println("intitializing auroramate subsystem")
   try:

@@ -1,7 +1,7 @@
 from browser import document, html, window, aio, console
 
 class App:
-  def __init__(self, name, icon, exec, customIcon=False):
+  def __init__(self, name, icon, code, customIcon=False):
     iconElement = html.IMG()
     if customIcon:
       iconElement.attrs["src"] = icon
@@ -26,8 +26,8 @@ class App:
       text.innerHTML = name;
 
     self.appcontainer <= html.BR() + text
-    self.code = exec
-    self.app.bind("click", window.weirdrun)
+    self.code = code
+    self.app.bind("click", self.weirdrun)
   def weirdrun(self, ev):
     try:
       self.code(ev)
@@ -63,4 +63,4 @@ def reloadApps():
     exec(storage[app])
   setupApps()
   # for window in openWindows:
-  #   window.windowContainer.attrs["style"] = f"left:{window.windowContainer.offsetLeft - window.pos1}px;top:{window.windowContainer.offsetTop - window.pos2}px;"
+  #   window.windowContainer.attrs["style"] = f"left:{window.windowContainer.offsetLeft - window.pos1}px;top:{window.windowContainer.offsetTop - window.pos2}px;

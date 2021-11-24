@@ -81,7 +81,7 @@ async function UDNexe(binary) {
         pointer = x
       },
       goto(x) {
-        if (UDNexe.debug) console.log(`[%cudnexe%c] [%cgoto%c] :%c${x}`,'color: lime','color: unset','color: blue','color: unset','color: cyan')
+        if (UDNexe.debug) console.log(`[%cudnexe%c] %cgoto%c :%c${x}`,'color: lime','color: unset','color: blue','color: unset','color: cyan')
         gotod = x;
       },
       getPointer() {return pointer},
@@ -119,7 +119,7 @@ UDNexe.instructions = {
     var [memoryAddress, value] = getTheNextBytes(2);
     if (memoryAddress > UDNexe.memory.length) return UDNexe.error('Segmentation fault');
     if (memoryAddress < 0) return UDNexe.error('Segmentation fault');
-    
+    console.log(`[%cudnasm%c] writing %c${value}%c to memory address %c$%c${memoryAddress}`,'color: lime','color: unset','color: cyan','color: unset','color: red','color: blue');
     UDNexe.memory[memoryAddress] = value;
   },
   0x09({getTheNextBytes, writeStringToMemory, binary, pointer, movePointer, getPointer}) {
@@ -139,7 +139,7 @@ UDNexe.instructions = {
     if (memoryAddress < 0) return UDNexe.error('Segmentation fault');
     
     UDNexe.stdout(UDNexe.memory[memoryAddress]);
-    
+    console.log(`[%cudnexe%c] [pseudocode] %cprint%c(memory[0x${memoryAddress.toString(16)}] %c${UDNexe.memory[memoryAddress]}%c);`,'color: lime','color: unset','color: blue','color: unset','font-style: italic; color: gray;','font-style: unset; color: unset;');
   },
   0x0B({getTheNextBytes}) {
     var [memoryAddress] = getTheNextBytes(1);
@@ -155,13 +155,13 @@ UDNexe.instructions = {
     
     var str = getStringFromMemory(startAddress);
     UDNexe.stdout(str);
-    
+    console.log(`[%cudnexe%c] [pseudocode] %cprint%c(%c"${str}"%c);`,'color: lime','color: unset','color: blue','color: unset','color: red','color: unset;');
   },
   0x0D({getTheNextBytes}) {
     var [startAddress, endAddress, value] = getTheNextBytes(3);
     if (startAddress > UDNexe.memory.length) return UDNexe.error('Segmentation fault');
     if (startAddress < 0) return UDNexe.error('Segmentation fault');
-    
+    console.log(`[%cudnasm%c] fill memory with %c${value}%c starting from the address range of: %c$%c${startAddress}%c-%c$%c${endAddress}`,'color: lime','color: unset', 'color: cyan','color: unset','color: red','color: blue','color: unset','color: red','color: blue')
     for (let i = startAddress; i < endAddress; i++) {
       UDNexe.memory[i] = value;
     }
@@ -172,6 +172,7 @@ UDNexe.instructions = {
     var operations = ['+','-','*','/'];
     var operation = operations[operationId];
     console.log(`[%cudnexe%c] running math operation: %c${x} %c${operation} %c${y}`,'color: lime','color: unset','color: cyan','color: blue','color: cyan');
+    console.log(`[%cudnexe%c] [pseudocode] %c$%c0x${memAddress.toString(16)} %c= %c${x} %c${operation} %c${y}`,'color: lime','color: unset','color: red','color: blue','color: gold','color: blue','color: unset','color: blue');
     switch (operation) {
       case '+':
         UDNexe.memory[memAddress] = x + y;
@@ -197,7 +198,7 @@ UDNexe.instructions = {
   0x10({getTheNextBytes}) {
     var [ms] = getTheNextBytes(1);
     if (ms < 0) return UDNexe.error('Invalid sleep delay');
-    console.log('[%cudnexe%c] sleep ',ms,'color: lime','color: unset')
+    console.log('[%cudnexe%c] %csleep %c'+ms,'color: lime','color: unset','color: blue','color: cyan')
     return sleep(ms);
   },
   0x11({getTheNextBytes, goto}) { // AND operator don't forget
@@ -230,12 +231,13 @@ UDNexe.instructions = {
     }
   },
   0x15({setBreak}) { // basically return;
-    console.log('[%cudnexe%c] return;','color: lime','color: unset');
+    console.log('[%cudnexe%c] %creturn%c;','color: lime','color: unset','color: blue','color: unset');
     setBreak(true);
   },
   0x16({getTheNextBytes, goto}) { // LESS THAN operator don't forget
     var [leftAddress, rightAddress, thenPos] = getTheNextBytes(3);
-    console.log(`[%cudnexe%c] LESS THAN operator %c$%c${leftAddress}%c, %c$%c${rightAddress}%c; jump :%c${thenPos}`,'color: lime','color: unset','color: red','color: blue','color: unset','color: red','color: blue','color: unset','color: cyan')
+    console.log(`[%cudnexe%c] LESS THAN operator %c$%c${leftAddress}%c, %c$%c${rightAddress}%c; jump :%c${thenPos}`,'color: lime','color: unset','color: red','color: blue','color: unset','color: red','color: blue','color: unset','color: cyan');
+    
     if (leftAddress < rightAddress) {
       goto(thenPos);
     }
@@ -318,8 +320,6 @@ UDNexe.stdout = function(data) {
 UDNexe.error = function(data) {
   return console.error(data);
 }
-UDNexe.compareFlag = false;
-UDNexe.skipducked = false;
 UDNexe.memory = new Uint32Array(1024);
 UDNexe.runFromMemory = function(start, end) {
   return UDNexe(UDNexe.getMemoryRegion(start, end))
