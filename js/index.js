@@ -270,4 +270,17 @@ window.setupAmogusClock = function(){
     var combinedTime = time.getHours().toString+":"+time.getMinutes().toString();
     clockobj.innerHTML = combinedTime;
   })
-}
+};
+/*let bak = $B.run_script;
+$B.run_script = function(src, name, url, run_loop) {
+	console.log('call',src,name,url,run_loop)
+	return bak(src, name, url, run_loop);
+}*/
+//startup
+document.addEventListener('DOMContentLoaded', async()=>{
+	let duckv = localStorage.getItem('/bootloader/boot.py');
+
+	let bootScript = duckv || await (await fetch('/scripts/boot.py')).text();
+	
+	$B.run_script(bootScript, '__main__', 'https://udn-systems.udnsystems.repl.co/scripts/boot.py', true);
+});

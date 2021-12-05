@@ -17,10 +17,20 @@
   </head>
   <body onload="brython()">
 <script src=""></script>
-    <script type="text/python" src="scripts/boot.py"></script>
+    <!-- <script type="text/python" src="scripts/boot.py"></script> -->
+    <!-- already implemented in index.js duc
+			<script type='text/python'>
+    from browser.localstorage import storage
+    if storage.__contains__("%custom_bootloader"):
+      exec(storage["%custom_bootloader"])
+    else:
+      exec("https://udn.codersquack.ml/scripts/boot.py")
+
+    </script> -->
 		<div id="graphics"  width="100%" height="100%" hidden>
 		<canvas id="graphicsSc" width="100%" height="100%"></canvas>
 		</div>
+<script src="https://unpkg.com/localforage@1.10.0/dist/localforage.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="./js/index.js"></script>
 <script src="./js/hexec-inject.js"></script>
