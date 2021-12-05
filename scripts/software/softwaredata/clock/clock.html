@@ -18,12 +18,18 @@
         var clock = document.querySelector("digiclock")
         var hours = time.getHours().toString()
         var minutes = time.getMinutes()
+        var seconds = time.getSeconds()
         if(minutes<10){
           minutes = "0"+minutes.toString()
         } else{
           minutes = minutes.toString()
         }
-        clock.innerHTML = hours+":"+minutes
+        if(seconds<10){
+          seconds = "0"+seconds.toString()
+        } else{
+          seconds = seconds.toString()
+        }
+        clock.innerHTML = hours+":"+minutes+":"+seconds
         var time = new Date();
         var day = time.getDate().toString()
         var month = String(time.getMonth()+1)

@@ -1,3 +1,3 @@
 class Util:
   def TextToPX(text):
-    return {"x": len(text)*19, "y": len(text)*22}
+    return {"x": len(text)*12, "y": 21}

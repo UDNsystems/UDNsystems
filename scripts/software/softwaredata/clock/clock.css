@@ -1,7 +1,7 @@
 body{
-  background-color: #00aaaa;
+  background-color: #cccccc;
   color: #000;
-  font-family: Calibri;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 analogclock {
         width: 30rem;

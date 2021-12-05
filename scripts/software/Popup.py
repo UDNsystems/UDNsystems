@@ -12,8 +12,6 @@ class Popup:
     self.windowtop <= name
     ### UTIL CALC
     calculatedSize = Util.TextToPX(innerHTML)
-    calculatedSize["x"] -= 76
-    calculatedSize["y"] = 20
     x = calculatedSize["x"]
     y = calculatedSize["y"]
     self.windowtop.attrs["style"] = f"height:{y}px;width:{x}px;"

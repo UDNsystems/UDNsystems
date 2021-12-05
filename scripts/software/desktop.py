@@ -14,4 +14,4 @@ def load_desktop():
   global appList
   load_taskbar()
   setupApps()
-  Popup("UDN "+str(__WEBOSVERSION__), "Warning","This is still in alpha.")
+  Popup("UDN "+str(__WEBOSVERSION__), "Warning","This is still in beta.")

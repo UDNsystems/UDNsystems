@@ -6,7 +6,7 @@ from browser.local_storage import storage
 import javascript
 import json
 
-__WEBOSVERSION__ = "v0.b1"
+__WEBOSVERSION__ = "v0.1b"
 
 if not "auroramate" in storage:
   storage["auroramate"] = 'false'
@@ -73,7 +73,7 @@ def emeregisterApp(app):
   YappList.append(app)
 # load the scripts
 
-scripts = ["langs.py","Window.py","Util.py","Popup.py","start.py","desktop.py", "App.py"]
+scripts = ["langs.py","Window.py","Util.py","Popup.py","start.py","desktop.py", "Menu.py", "App.py"]
 error = False
 screen.println("loading duck scripts...")
 for script in scripts:
@@ -161,4 +161,4 @@ quickBoot = bool(storage['quick-boot']);
 #print(quickBoot)
 #print('^B')
 if not error:
-  window.setTimeout(keypress,20000);
+  window.setTimeout(keypress,2000);
