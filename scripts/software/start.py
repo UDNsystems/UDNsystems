@@ -30,12 +30,11 @@ def load_taskbar():
   f = open("styling/startmenu.css")
   customCss = f.read()
   f.close()
-  #menu stuff
-  """menu = widgets.Menu(container=startmenu)
+  menu = widgets.Menu(container=startmenu)
   programs = menu.add_menu(lang.get('apps')+' >')
   for app in YappList:
     programs.add_item(app.name).bind("click", app.code)
-  document.getElementById("desktop").appendChild(startmenu)""" # ducks up on newer versions of chrome
+  document.getElementById("desktop").appendChild(startmenu)
   #end of menu stuff
   startbutton.bind('click',startMenuClick)
   document.body.appendChild(taskBar)
