@@ -1,2 +1,4 @@
 User-Agent: *
 Disallow: /
+Sus: true
+You know the rules and so do i: true

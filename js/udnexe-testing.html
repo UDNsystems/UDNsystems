@@ -56,6 +56,7 @@
   <h3 class="arial">Your program.</h3>
   <p id="error" class="error"></p>
   <textarea name="program" id="program" cols="50" rows="10"></textarea>
+ <input type="file" name="importfile" id="importfile"/>
   <button id="run">Run</button>
   <br><br>
   <h3 class="arial">String to byte converter</h3>
@@ -97,7 +98,13 @@ Memory addresses (for this page won't work on normal UDN):
     let memoryViewer = document.querySelector('#memoryViewer');
     //memoryViewer.style.width = `${UDNasm.memory.length * 2}px`;
     //memoryViewer.style.height = `${UDNasm.memory.length}px`;
-    
+    document.getElementById('importfile').onchange = async function(e) {
+      let file = document.getElementById('importfile').files[0];
+      let arrbuf = await file.arrayBuffer();
+      let intarr = new Uint8Array(arrbuf);
+      let arr = [...intarr];
+      document.getElementById('program').value = arr.join(' ')
+    }
     function displayMemory() {
       memoryViewer.innerHTML = "";
       function createSpan(text) {

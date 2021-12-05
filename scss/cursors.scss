@@ -1,0 +1,9 @@
+@mixin Arrow {
+	cursor: url(/cursors/SmoothArrow.cur), auto !important;
+}
+@mixin Pointer {
+	cursor: url(/cursors/SmoothHand.cur), pointer !important;
+}
+@mixin Move {
+	cursor: url(/cursors/SmoothMove.cur), move !important;
+}

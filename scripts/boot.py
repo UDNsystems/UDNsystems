@@ -1,11 +1,12 @@
-# version alpha v0.8a
+# version BETA v0.1b
+
 
 from browser import document, html, window
 from browser.local_storage import storage
 import javascript
 import json
 
-__WEBOSVERSION__ = "v0.8a"
+__WEBOSVERSION__ = "v0.b1"
 
 if not "auroramate" in storage:
   storage["auroramate"] = 'false'
@@ -46,6 +47,7 @@ window.execPy = execPy
 # load the icon
 iconElement = html.IMG()
 iconElement.attrs["src"] = "content/system/icon.jpg"
+iconElement.attrs["class"] = "logoanimation"
 text = html.SPAN()
 text.attrs["style"] = "font-size:18;color:#FFFFFF;font-family:Calibri;"
 if auroramate:
@@ -159,7 +161,4 @@ quickBoot = bool(storage['quick-boot']);
 #print(quickBoot)
 #print('^B')
 if not error:
-  if not quickBoot:
-	  window.setTimeout(keypress,3000);
-  else:
-	  window.setTimeout(keypress,10);
+  window.setTimeout(keypress,20000);

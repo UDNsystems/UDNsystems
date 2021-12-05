@@ -55,16 +55,35 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
-.font {
-  font-family: Arial, Helvetica, sans-serif;
+/* empty idk why */
+@keyframes flip-horizontal-bottom {
+  0% {
+            transform: rotateX(0);
+  }
+  100% {
+            transform: rotateX(-360deg);
+  }
+}
+@keyframes logoanimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.logoanimation {
+  /* animation: logoanimation 1s infinite; */
+	animation: flip-horizontal-bottom 1.3s linear infinite both;
 }
 
 body {
-  background-color: black;
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  cursor: url(/cursors/SmoothArrow.cur), auto !important;
+  background-color: black;
   overflow: hidden;
   z-index: 1;
   position: absolute;
@@ -72,6 +91,22 @@ body {
   left: 0;
   height: 100%;
   width: 100%;
+}
+
+.cursor-arrow {
+  cursor: url(/cursors/SmoothArrow.cur), auto !important;
+}
+
+.cursor-pointer {
+  cursor: url(/cursors/SmoothHand.cur), pointer !important;
+}
+
+.cursor-move {
+  cursor: url(/cursors/SmoothHand.cur), pointer !important;
+}
+
+a {
+  cursor: url(/cursors/SmoothHand.cur), pointer !important;
 }
 
 .focused {
@@ -97,11 +132,12 @@ body {
   margin: 10px;
   display: inline-block;
 }
+
 .app-containers > button {
   background-color: #c9c3c3;
   padding: 10px;
-  border: 5px solid black;
-  cursor: pointer;
+  border: 2px solid black;
+  cursor: url(/cursors/SmoothHand.cur), pointer !important;
   /* outline: 5px solid black; */
 }
 
@@ -110,7 +146,7 @@ body {
   top: 0px;
   left: 0px;
   width: 100%;
-  cursor: pointer;
+  cursor: url(/cursors/SmoothHand.cur), pointer !important;
 }
 
 .app-text {
@@ -122,29 +158,34 @@ body {
 .app-close-button {
   /* display: inline-block; */
   color: white;
-  background: red;
   font-family: Arial, Helvetica, sans-serif;
-  cursor: pointer;
-  padding: 5px 10px;
+  cursor: url(/cursors/SmoothHand.cur), pointer !important;
+  padding: 3px 9px;
   float: right;
+  border-radius: 5px;
+  margin-top: 2px;
+  margin-right: 2px;
 }
 
 .app-minimize-button {
   /* display: inline-block; */
   color: white;
-  background: blue;
   font-family: Arial, Helvetica, sans-serif;
-  cursor: pointer;
-  padding: 5px 10px;
+  cursor: url(/cursors/SmoothHand.cur), pointer !important;
+  padding: 1px 10px;
   float: right;
+  border-radius: 5px;
+  margin: 4px;
 }
 
 .app-close-button:hover {
   background: #990707;
+  transition: all 0.5s;
 }
 
-.app-close-button:hover {
+.app-minimize-button:hover {
   background: #000085;
+  transition: all 0.5s;
 }
 
 .app-containers > button:hover {
@@ -177,6 +218,7 @@ body {
   left: 50%;
   -moz-transform: translateX(-50%) translateY(-50%);
   -webkit-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   z-index: 10;
   /* make sure it doesn't overlap */
@@ -203,25 +245,34 @@ body {
 }
 
 .windows-top {
+  -webkit-box-shadow: 16px 14px 15px -4px rgba(0, 0, 0, 0.73);
+  box-shadow: 16px 14px 15px -4px rgba(0, 0, 0, 0.73);
   position: absolute;
   height: 30px;
   width: 100px;
-  bottom: 5px;
-  background-color: cyan;
-  outline: 5px solid black;
+  bottom: -2px;
+  background: #020024;
+  background: linear-gradient(90deg, #020024 0%, white 0%, #00d4ff 100%);
+  outline: 2px solid black;
   font-family: Arial, Helvetica, sans-serif;
+  opacity: 0.9;
+  border-radius: 3px;
 }
 
 .windows-content {
-  width: 100px;
-  height: 100px;
-  position: absolute;
-  background-color: white;
-  outline: 5px solid black;
+  -webkit-box-shadow: 16px 14px 15px -4px rgba(0, 0, 0, 0.73);
+  box-shadow: 16px 14px 15px -4px rgba(0, 0, 0, 0.73);
   -moz-user-select: text;
   -webkit-user-select: text;
   -ms-user-select: text;
   user-select: text;
+  border-radius: 3px;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  background-color: white;
+  outline: 2px solid black;
+  opacity: 0.9;
 }
 
 .windows {
@@ -247,6 +298,9 @@ body {
   to {
     transform: translateY(50vh);
   }
+}
+.font {
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 /*# sourceMappingURL=style.css.map */

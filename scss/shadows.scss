@@ -1,0 +1,7 @@
+@mixin boxShadow($props) {
+	-webkit-box-shadow: $props;
+	box-shadow: $props;
+}
+@mixin windowShadow {
+	@include boxShadow(16px 14px 15px -4px rgba(0,0,0,0.73));
+}

@@ -1,144 +1,191 @@
-$default-font: Arial, Helvetica, sans-serif;
-$userselect: no;
-@use 'components.scss';
-
-// Helpers
-
-@mixin transform($data) {
-	-moz-transform: $data;
-	-webkit-transform: $data;
-	transform: $data;
+@use 'components';
+@use 'startmenu';
+@use 'shadows';
+@use 'cursors';
+$os-font: Arial, Helvetica, sans-serif;
+$logo-animation-duration: 1s;
+$rounded-corners: true;
+$logo-animation: true;
+@mixin userSelect($x) {
+	-moz-user-select: $x;
+	-webkit-user-select: $x;
+  -ms-user-select: $x;
+	user-select: $x;
 }
-@mixin userSelect($type) {
-	-moz-user-select: $type;
-	-webkit-user-select: $type;
-	-ms-user-select: $type;
-	user-select: $type;
+@mixin transform($x) {
+	-moz-transform: $x;
+	-webkit-transform: $x;
+	-ms-transform: $x;
+	transform: $x;
 }
-
-// Actual CSS
-
-.font {
-	font-family: $default-font;
+@function screenCenter() {
+	@return translateX(-50%) translateY(-50%)
 }
-
-body {
-  background-color:black;
-	@if $userselect == no {
-		@include userSelect(none);
+@keyframes logoanimation {
+	from {transform:rotate(0deg);}
+  to {transform:rotate(360deg);}
+}
+@keyframes flip-horizontal-bottom {
+  0% {
+    -webkit-transform: rotateX(0);
+            transform: rotateX(0);
+  }
+  100% {
+    -webkit-transform: rotateX(-180deg);
+            transform: rotateX(-180deg);
+  }
+}
+.logoanimation {
+	@if $logo-animation {
+		animation: flip-horizontal-bottom;$logo-animation-duration infinite;
 	}
-	overflow: hidden;
+}
+// please ignore the scss errors after the @include lines that have a "." in them it's just replit being sus
+body {
+  @include userSelect(none);
+	@include cursors.Arrow;
+	background-color: black;
+  overflow: hidden;
   z-index: 1;
-  
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   width: 100%;
 }
-
+.cursor-arrow {
+	@include cursors.Arrow;
+}
+.cursor-pointer {
+	@include cursors.Pointer;
+}
+.cursor-move {
+	@include cursors.Pointer;
+}
+a {
+	@include cursors.Pointer;
+}
 .focused {
-	z-index: 5;
-}
-.unfocused {
-	z-index: 2;
+  z-index: 5;
 }
 
-* { padding: 0; margin: 0; }
+.unfocused {
+  z-index: 2;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
 
 #windows-content-Terminal {
   color: #00FF00;
-  background-color:#000000;
+  background-color: #000000;
   font-family: monospace;
 }
 
-.app-containers{
-	& {
-		margin:  10px;
-		display: inline-block;
-	}
-  > button {
-		background-color: rgb(201, 195, 195);
-		padding: 10px;
-		border: 5px solid black;
-		cursor: pointer;
-		/* outline: 5px solid black; */
-	}
+.app-containers {
+  margin: 10px;
+  display: inline-block;
 }
-.app-icon {
-	display: inline-block;
-	top: 0px;
-  left: 0px;
-	width: 100%;
-	cursor: pointer;
+.app-containers > button {
+  background-color: #c9c3c3;
+  padding: 10px;
+  border: 2px solid black;
+  @include cursors.Pointer;
+  /* outline: 5px solid black; */
 }
-.app-text {
-	color: black;
-	font-family: $default-font;
-	text-align: center;
 
+.app-icon {
+  display: inline-block;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  @include cursors.Pointer;
+}
+
+.app-text {
+  color: black;
+  font-family: $os-font;
+  text-align: center;
 }
 
 .app-close-button {
-	/* display: inline-block; */
-	color: white;
-	background: red;
-	font-family: $default-font;
-	cursor: pointer;
-	padding: 5px 10px;
-	float: right;
+  /* display: inline-block; */
+  color: white;
+  //background: red;
+	//background: rgb(2,0,36);
+	//background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,0,0,1) 5%);
+  font-family: $os-font;
+  @include cursors.Pointer;
+  padding: 3px 9px;
+  float: right;
+	border-radius: 5px;
+	margin-top: 2px;
+	margin-right: 2px;
 }
 
 .app-minimize-button {
-	/* display: inline-block; */
-	color: white;
-	background: blue;
-	font-family: $default-font;
-	cursor: pointer;
-	padding: 5px 10px;
-	float: right;
+  /* display: inline-block; */
+  color: white;
+  //background: blue;
+  font-family: $os-font;
+  @include cursors.Pointer;
+  padding: 1px 10px;
+  float: right;
+	border-radius: 5px;
+	margin: 4px;
 }
 
 .app-close-button:hover {
-	background: rgb(153, 7, 7);
+  background: #990707;
+	transition: all 0.5s;
 }
 
-.app-close-button:hover {
-	background: rgb(0, 0, 133);
+.app-minimize-button:hover {
+  background: #000085;
+	transition: all 0.5s;
 }
 
 .app-containers > button:hover {
-  background: rgb(117, 104, 101);
+  background: #756865;
 }
+
 .apps {
   width: 60px;
   height: 60px;
 }
+
 #taskbar {
   position: absolute;
   z-index: 20;
   border: 2px solid black;
-  background-color: rgb(112, 112, 112);
+  background-color: #707070;
   width: 100%;
   height: 20px;
   top: calc(100% - 20px);
 }
+
 .popup-icon {
   width: 60px;
   height: 65px;
 }
+
 #icon {
   position: absolute;
   top: 50%;
   left: 50%;
-  @include transform(translateX(-50%) translateY(-50%));
-	z-index: 10; /* make sure it doesn't overlap */
+  @include transform(screenCenter());
+  z-index: 10;
+  /* make sure it doesn't overlap */
 }
+
 #startbtn {
   position: relative;
   float: left;
   margin-right: 5px;
 }
+
 .taskbar-win-obj {
   float: left;
   background-color: #403e3e;
@@ -146,27 +193,46 @@ body {
   margin-right: 5px;
   color: white;
   position: relative;
-  font-family: $default-font;
+  font-family: Arial, Helvetica, sans-serif;
 }
+
 .taskbar-win-obj:hover {
   background-color: #00FFFF;
 }
+
 .windows-top {
+	@include shadows.windowShadow;
   position: absolute;
   height: 30px;
   width: 100px;
-  bottom: 5px;
-  background-color: cyan;
-  outline: 5px solid black;
-	font-family: $default-font;
+	@if $rounded-corners {
+		bottom: -2px;
+		border-radius: 3px;
+	} @else {
+		bottom: 2px;
+	}
+  
+  //background-color: cyan;
+	background: rgb(2,0,36);
+	background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(255,255,255,1) 0%, rgba(0,212,255,1) 100%);
+  outline: 2px solid black;
+  font-family: Arial, Helvetica, sans-serif;
+	opacity: 0.9; // make it semi-transperent for even cooler effects
 }
+
 .windows-content {
+	@include shadows.windowShadow;
+	@include userSelect(text);
+	@if $rounded-corners {
+		border-radius: 3px;
+	}
+	
   width: 100px;
   height: 100px;
   position: absolute;
   background-color: white;
-  outline: 5px solid black;
-  @include userSelect(text);
+  outline: 2px solid black;
+	opacity: 0.9;
 }
 .windows {
   position: absolute;
@@ -174,20 +240,25 @@ body {
   right: 50%;
 }
 
-#start-menu{
+#start-menu {
   position: absolute;
   z-index: 10;
-	animation: opening 0.2s linear;
-	height:50vh;
-	background-color:bisque;
-	float:left;
-	transform: translateY(50vh);
+  animation: opening 0.2s linear;
+  height: 50vh;
+  background-color: bisque;
+  float: left;
+  transform: translateY(50vh);
 }
-@keyframes opening{
-	from{
-		transform: translateY(100vh);
-	}
-	to{
-		transform: translateY(50vh);
-	}
+
+@keyframes opening {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(50vh);
+  }
+}
+
+.font {
+	font-family: $os-font;
 }
