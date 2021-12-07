@@ -83,7 +83,7 @@ body {
     display: flex;
     flex-direction: column;
     border-left: none!important;
-	font-family: Arial, Helvetica, sans-serif;
+	  font-family: Arial, Helvetica, sans-serif;
 }
 .vertical {
 	left: 0;
