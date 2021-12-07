@@ -1,5 +1,5 @@
-var oldHandler = window.onmessage;
-function secondHandler(e) {}
+/*var oldHandler = window.onmessage;
+
 window.onmessage = async function (e) {
   console.log('got event', e.data)
   if (e.data.event === "desktopLoaded" && e.data.arg !== "udnsys-freload") {
@@ -13,4 +13,4 @@ window.onmessage = async function (e) {
   }
   oldHandler(e)
 	secondHandler(e);
-}
+}*/

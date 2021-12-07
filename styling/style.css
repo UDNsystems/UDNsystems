@@ -84,7 +84,7 @@ body {
   -ms-user-select: none;
   user-select: none;
   cursor: url(/cursors/SmoothArrow.cur), auto !important;
-  background-color: black;
+  background-color: white;
   overflow: hidden;
   z-index: 1;
   position: absolute;
