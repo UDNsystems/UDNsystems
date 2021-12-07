@@ -24,7 +24,7 @@ lowlvlScripts = ["BOS.py","filesystem.py","SUS.py"] # moved SUS.py to lowlevel b
 for script in lowlvlScripts:
   f = open(f"scripts/lowlevel/{script}")
   scriptcode = f.read()
-  f.close() # looks sus
+  f.close()
   exec(scriptcode)
   screen.println(f"initialized {script}")
 def print_col(text,hex):

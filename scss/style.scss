@@ -44,7 +44,7 @@ $logo-animation: true;
 body {
   @include userSelect(none);
 	@include cursors.Arrow;
-	background-color: black;
+	background-color: white;
   overflow: hidden;
   z-index: 1;
   position: absolute;
