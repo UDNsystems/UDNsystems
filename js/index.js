@@ -228,6 +228,68 @@ const screenActions = {
     }
 };
 function secondHandler(e) { }
+  },
+  evalPy(data, message) {
+    try {
+      let output = window.evalPy(data.code);
+
+      message.source.postMessage({
+        action: 'evalPy',
+        data: output
+      }, '*');
+
+    } catch (err) {
+      console.error(err)
+      message.source.postMessage({
+        action: 'evalPy',
+        data: err,
+        error: true
+      }, '*')
+    }
+  },
+  // udn apis
+  storageGetKeys(data, message) {
+    console.log(message.source)
+    message.source.postMessage({
+      action: data.action,
+      data: Object.keys(localStorage)
+    }, "*");
+  },
+  getStorageKey(data, message) {
+    message.source.postMessage({
+      action: data.action,
+      data: localStorage.getItem(data.data)
+    }, "*")
+  },
+  setStorageKey(data) {
+    localStorage.setItem(data.key, data.value)
+  },
+  removeStorageKey(data) {
+    localStorage.removeItem(data.key);
+  },
+  shutdown() {
+    window.onerror('ACPI Shutdown.');
+  },
+	setLocalforageItem(data, message) {
+		localforage.setItem(data.key, data.value).then(x => message.source.postMessage({action: data.action},'*'))
+	},
+	async getLocalforageItem(data, message) {
+		return message.source.postMessage({
+			action: data.action,
+			data: await localforage.getItem(data.key)
+		},'*')
+	},
+	removeLocalforageItem(data, message) {
+		localforage.removeItem(data.key).then(x => message.source.postMessage({action: data.action},'*'))
+	},
+	async lfWriteChar(data, message) {
+		if (data.char.length > 1) return console.error('not a char');
+		let item = await localforage.getItem(data.key);
+		item += data.char;
+		await localforage.setItem(data.key, item);
+		message.source.postMessage({action: data.action},'*')
+	}
+}
 window.onmessage = function (message) {
     const data = message.data;
     const action = screenActions[data.action];
@@ -312,8 +374,10 @@ $B.run_script = function(src, name, url, run_loop) {
     return bak(src, name, url, run_loop);
 }*/
 //startup
-document.addEventListener('DOMContentLoaded', async () => {
-    let duckv = await window.localforage.getItem('/bootloader/boot.py');
-    let bootScript = duckv || await (await fetch('/scripts/boot.py')).text();
-    window.$B.run_script(bootScript, '__main__', 'https://udn-systems.udnsystems.repl.co/scripts/boot.py', true); // wtf is a B
+document.addEventListener('DOMContentLoaded', async()=>{
+	let duckv = await localforage.getItem('/bootloader/boot.py');
+
+	let bootScript = duckv || await (await fetch('/scripts/boot.py')).text();
+	
+	$B.run_script(bootScript, '__main__', 'https://udn-systems.udnsystems.repl.co/scripts/boot.py', true); // wtf is a B
 });
