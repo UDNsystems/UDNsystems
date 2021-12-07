@@ -192,7 +192,26 @@ const screenActions = {
   },
   shutdown() {
     window.onerror('ACPI Shutdown.');
-  }
+  },
+	setLocalforageItem(data, message) {
+		localforage.setItem(data.key, data.value).then(x => message.source.postMessage({action: data.action},'*'))
+	},
+	async getLocalforageItem(data, message) {
+		return message.source.postMessage({
+			action: data.action,
+			data: await localforage.getItem(data.key)
+		},'*')
+	},
+	removeLocalforageItem(data, message) {
+		localforage.removeItem(data.key).then(x => message.source.postMessage({action: data.action},'*'))
+	},
+	async lfWriteChar(data, message) {
+		if (data.char.length > 1) return console.error('not a char');
+		let item = await localforage.getItem(data.key);
+		item += data.char;
+		await localforage.setItem(data.key, item);
+		message.source.postMessage({action: data.action},'*')
+	}
 }
 window.onmessage = function (message) {
   const data = message.data;
@@ -278,9 +297,9 @@ $B.run_script = function(src, name, url, run_loop) {
 }*/
 //startup
 document.addEventListener('DOMContentLoaded', async()=>{
-	let duckv = localStorage.getItem('/bootloader/boot.py');
+	let duckv = await localforage.getItem('/bootloader/boot.py');
 
 	let bootScript = duckv || await (await fetch('/scripts/boot.py')).text();
 	
-	$B.run_script(bootScript, '__main__', 'https://udn-systems.udnsystems.repl.co/scripts/boot.py', true);
+	$B.run_script(bootScript, '__main__', 'https://udn-systems.udnsystems.repl.co/scripts/boot.py', true); // wtf is a B
 });

@@ -1,0 +1,150 @@
+:root {
+	--code-toolbarHoverBackground: rgba(90, 93, 94, 0.31);
+  --code-notifications-border: #303031;
+  --code-language-status-color2: #3794ff;
+  --code-language-status-color3: #f14c4c;
+  --notebook-focused-cell-border-color: #007fd4;
+  --notebook-inactive-focused-cell-border-color: #37373d;
+  --notebook-selected-cell-border-color: #37373d;
+  --sash-size: 4px;
+  --sash-hover-size: 4px;
+  -webkit-user-select: none;
+  --monaco-monospace-font: Consolas,"Courier New",monospace;
+  --z-index-notebook-progress-bar: 5;
+  --z-index-notebook-list-insertion-indicator: 10;
+  --z-index-notebook-cell-editor-outline: 20;
+  --z-index-notebook-scrollbar: 25;
+  --z-index-notebook-cell-status: 26;
+  --z-index-notebook-cell-drag-handle: 26;
+  --z-index-notebook-folding-indicator: 26;
+  --z-index-notebook-output: 27;
+  --z-index-notebook-cell-bottom-toolbar-container: 28;
+  --z-index-notebook-run-button-container: 29;
+  --z-index-notebook-input-collapse-condicon: 29;
+  --z-index-notebook-cell-output-toolbar: 30;
+  --z-index-notebook-cell-toolbar: 36;
+}
+body {
+	background: var(--code-notifications-border); /* temp until we find the correct background color */
+}
+.vs-btn {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  padding: 4px;
+  text-align: center;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  max-width: 300px;
+  color: rgb(255, 255, 255);
+  background-color: rgb(14, 99, 156);
+	line-height: 1.4em;
+  forced-color-adjust: none;
+  font-size: 13px;
+  white-space: normal;
+	font-family: Segoe WPC,Segoe UI,sans-serif;
+	margin-left: 5px;
+}
+.vs-btn:hover {
+	background-color: rgb(17, 119, 187);
+}
+.vs-btn:focus {
+  outline-offset: 2px!important;
+  outline-width: 1px;
+  outline-style: solid;
+  opacity: 1!important;
+  outline-color: #007fd4;
+}
+.button-container {
+  line-height: 1.4em;
+  forced-color-adjust: none;
+  color: #cccccc;
+  font-size: 13px;
+  white-space: normal;
+  margin-block-start: 1em;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  width: 100%;
+  max-width: 300px;
+  transition: max-width .2s ease-out;
+}
+.pane {
+    line-height: 1.4em;
+    forced-color-adjust: none;
+    color: #cccccc;
+    font-size: 13px;
+    white-space: normal;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border-left: none!important;
+	font-family: Arial, Helvetica, sans-serif;
+}
+.vertical {
+	left: 0;
+	width: 250px;
+	z-index: 1;
+	height: 100%;
+}
+.monaco-editor {
+	margin-left: 250px;
+	margin-top: -68px;
+}
+.slider {
+	left: 471px;
+}
+.pane-header {
+  forced-color-adjust: none;
+  color: #cccccc;
+  white-space: normal;
+  -webkit-user-drag: element;
+  user-select: none;
+  height: 22px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  overflow: hidden;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
+  border-top: none!important;
+  line-height: 22px;
+  background-color: rgba(128, 128, 128, 0.2);
+}
+.pane-body {
+  line-height: 1.4em;
+  forced-color-adjust: none;
+  color: #cccccc;
+  font-size: 13px;
+  white-space: normal;
+  overflow: hidden;
+  flex: 1;
+}
+.title {
+    forced-color-adjust: none;
+    color: #cccccc;
+    text-transform: uppercase;
+    cursor: pointer;
+    line-height: 22px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 11px;
+    min-width: 3ch;
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
+.quick-input-box > .monaco-inputbox > .ibwrapper > input {
+	outline-offset: 2px!important;
+  outline-width: 1px;
+  outline-style: solid;
+  opacity: 1!important;
+  outline-color: #007fd4;
+}

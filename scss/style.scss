@@ -28,11 +28,11 @@ $logo-animation: true;
 @keyframes flip-horizontal-bottom {
   0% {
     -webkit-transform: rotateX(0);
-            transform: rotateX(0);
+    transform: rotateX(0);
   }
   100% {
     -webkit-transform: rotateX(-180deg);
-            transform: rotateX(-180deg);
+    transform: rotateX(-180deg);
   }
 }
 .logoanimation {
@@ -44,7 +44,7 @@ $logo-animation: true;
 body {
   @include userSelect(none);
 	@include cursors.Arrow;
-	background-color: black;
+	background-color: white;
   overflow: hidden;
   z-index: 1;
   position: absolute;

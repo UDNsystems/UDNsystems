@@ -8,6 +8,7 @@ wallpapers = {
   "img2": "Green Box",
   "img3": "Space Travel",
   "bliss": "Bliss Duck",
+  "betarelease": "Beta Release Wallpaper",
   "sus": "SUS AMOGUS IMPOSTER"
 }
 
