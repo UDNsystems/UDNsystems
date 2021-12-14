@@ -17,6 +17,7 @@ declare global {
 			evalPy: Function;
 			ctx: CanvasRenderingContext2D;
 			localforage: any;
+			langFileParser: Function;
 		}
 }
 
@@ -226,7 +227,7 @@ const screenActions: {[key: string]: Function} = {
     localStorage.removeItem(data.key);
   },
   shutdown() {
-    window.onerror?.('ACPI Shutdown.');
+    if (window.onerror) window.onerror('ACPI Shutdown.');
   },
 	setLocalforageItem(data: {key: string; value: string; action: string}, message: any) {
 		window.localforage.setItem(data.key, data.value).then(() => message.source.postMessage({action: data.action},'*'))
@@ -287,6 +288,7 @@ function langFileParser(data: string) {
   return newJSON;
   // wait enable notifications and click on the notification when i send a message maybe that will work
 }
+window.langFileParser = langFileParser;
 function parseKeys(text: string, json: {[key: string]: string}) {
   return text
     .replace(/{key\.(.*)}/g, (str: string, name: string) => {
@@ -320,7 +322,8 @@ window.evalJS = function(code: string){
 window.setupAmogusClock = function(){
   var clockobj = document.createElement("DIV")
   clockobj.id = "taskbar.CLOCK"
-  document.getElementById("taskbar")?.appendChild?.(clockobj);
+	let taskbar = document.getElementById("taskbar");
+  if (taskbar) taskbar.appendChild(clockobj);
   setInterval(function(){
     var time = new Date()
     var combinedTime = time.getHours().toString+":"+time.getMinutes().toString();

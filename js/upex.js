@@ -8,6 +8,7 @@ function loadScript(url) {
 loadScript('https://gildas-lormeau.github.io/zip.js/demos/lib/zip.min.js');
 
 let UPEX = (function() {
+	let isTerminal = location.hostname === "terminal.udnsystems.repl.co";
 	class UPEXError extends Error {
 		constructor(message = "", ...args) {
 			super(message, ...args);
@@ -34,9 +35,11 @@ let UPEX = (function() {
 			console.log('[upex] unzipping upex file...');
 			let entries = await model.getEntries(blob);
 			console.log('[upex] unzipped');
+			
 			let manifestFile = null;
 			console.log('[upex] looking for the index.js file')
 			for (let file of entries) {
+				console.log(file)
 				if (file.filename === "index.js") {
 					manifestFile = file;
 				}
@@ -48,7 +51,7 @@ let UPEX = (function() {
 				vfs[file.filename] = await (await model.getData(file)).text();
 			}
 			console.log('[upex] compiling to js function...');
-			return (new Function('vfs','external',vfs['index.js'])).bind(this, vfs);
+			return (new Function('vfs',vfs['index.js'])).bind(this, vfs);
 		}
 	}
 })();
