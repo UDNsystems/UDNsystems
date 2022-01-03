@@ -229,15 +229,93 @@ const screenActions = {
     }
 };
 function secondHandler(e) { }
+class OSAPIError {
+    name;
+    message;
+    constructor(name, message) {
+        this.name = name;
+        this.message = message;
+    }
+}
+function OSAPI_GenerateMessageID() {
+    return Math.floor(Math.random() * 99999999);
+}
 window.onmessage = function (message) {
-    const data = message.data;
-    const action = screenActions[data.action];
-    console.log(`[TASK] Action=${data.action} Data=${JSON.stringify(data)}`);
-    if (action)
-        return action(data, message);
-    //TextScreen.instance.println(data.text);
-    secondHandler(message);
+    if (!message)
+        return;
+    if (!message.source)
+        return;
+    //console.log(message.data)
+    if (message.data.hasOwnProperty('response'))
+        return;
+    console.log(message.data);
+    const requestMessage = message.data;
+    const request = requestMessage.request;
+    const messageId = requestMessage.messageId;
+    const origin = requestMessage.origin;
+    let rawPostMessageReply = message.source.postMessage;
+    if (!rawPostMessageReply)
+        return;
+    const action = request.action;
+    const kind = request.kind;
+    const requestBody = request.body;
+    let func = OSAPIFunctions[`${action}$${kind}`];
+    let replyFunc = function (data) {
+        if (data instanceof OSAPIError) {
+            return rawPostMessageReply({
+                response: {
+                    error: {
+                        name: data.name,
+                        message: data.message,
+                        str: `${data.name}: ${data.message}`
+                    }
+                },
+                status: 1,
+                messageId
+            });
+        }
+        return rawPostMessageReply({
+            response: data,
+            status: 0,
+            messageId
+        });
+    };
+    func(replyFunc, requestBody);
 };
+const OSAPIFunctions = {
+    POST$open_alert(reply, body) {
+        reply(null);
+        alert(body.text);
+    },
+    POST$BOS_print(reply, body) {
+        TextScreen.instance.print(body);
+        reply(null);
+    },
+    DELETE$BOS_clear(reply, body) {
+        TextScreen.instance.clear();
+        reply(null);
+    },
+    PATCH$BOS_color(reply, body) {
+        TextScreen.instance.changeColor(body);
+        reply(null);
+    },
+    POST$BOS_printToLine(reply, body) {
+        TextScreen.instance.printToLine(body.text, body.line);
+        reply(null);
+    },
+    PATCH$BOS_cursorColor(reply, body) {
+        TextScreen.instance.changeCursorColor(body);
+        reply(null);
+    },
+    GET$localStorage(reply, body) {
+        reply(localStorage.getItem(body));
+    },
+    POST$localStorage(reply, body) {
+        localStorage.setItem(body.key, body.value);
+        reply(null);
+    }
+};
+window.OSAPIFunctions = OSAPIFunctions;
 function langFileParser(data) {
     function parseLine(text) {
         let lp = text.split('=');
