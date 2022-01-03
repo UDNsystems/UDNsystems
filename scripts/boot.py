@@ -73,7 +73,7 @@ def emeregisterApp(app):
   YappList.append(app)
 # load the scripts
 
-scripts = ["langs.py","Window.py","Util.py","Popup.py","start.py","desktop.py", "Menu.py", "App.py"]
+scripts = ["langs.py","Window.py","Util.py","Popup.py","start.py","desktop.py", "Menu.py", "App.py", "OSAPI.py"]
 error = False
 screen.println("loading duck scripts...")
 for script in scripts:

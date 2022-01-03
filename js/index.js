@@ -204,7 +204,8 @@ const screenActions = {
         localStorage.removeItem(data.key);
     },
     shutdown() {
-        window.onerror?.('ACPI Shutdown.');
+        if (window.onerror)
+            window.onerror('ACPI Shutdown.');
     },
     setLocalforageItem(data, message) {
         window.localforage.setItem(data.key, data.value).then(() => message.source.postMessage({ action: data.action }, '*'));
@@ -228,77 +229,99 @@ const screenActions = {
     }
 };
 function secondHandler(e) { }
-  },
-  evalPy(data, message) {
-    try {
-      let output = window.evalPy(data.code);
-
-      message.source.postMessage({
-        action: 'evalPy',
-        data: output
-      }, '*');
-
-    } catch (err) {
-      console.error(err)
-      message.source.postMessage({
-        action: 'evalPy',
-        data: err,
-        error: true
-      }, '*')
+class OSAPIError {
+    name;
+    message;
+    constructor(name, message) {
+        this.name = name;
+        this.message = message;
     }
-  },
-  // udn apis
-  storageGetKeys(data, message) {
-    console.log(message.source)
-    message.source.postMessage({
-      action: data.action,
-      data: Object.keys(localStorage)
-    }, "*");
-  },
-  getStorageKey(data, message) {
-    message.source.postMessage({
-      action: data.action,
-      data: localStorage.getItem(data.data)
-    }, "*")
-  },
-  setStorageKey(data) {
-    localStorage.setItem(data.key, data.value)
-  },
-  removeStorageKey(data) {
-    localStorage.removeItem(data.key);
-  },
-  shutdown() {
-    window.onerror('ACPI Shutdown.');
-  },
-	setLocalforageItem(data, message) {
-		localforage.setItem(data.key, data.value).then(x => message.source.postMessage({action: data.action},'*'))
-	},
-	async getLocalforageItem(data, message) {
-		return message.source.postMessage({
-			action: data.action,
-			data: await localforage.getItem(data.key)
-		},'*')
-	},
-	removeLocalforageItem(data, message) {
-		localforage.removeItem(data.key).then(x => message.source.postMessage({action: data.action},'*'))
-	},
-	async lfWriteChar(data, message) {
-		if (data.char.length > 1) return console.error('not a char');
-		let item = await localforage.getItem(data.key);
-		item += data.char;
-		await localforage.setItem(data.key, item);
-		message.source.postMessage({action: data.action},'*')
-	}
+}
+function OSAPI_GenerateMessageID() {
+    return Math.floor(Math.random() * 99999999);
 }
 window.onmessage = function (message) {
-    const data = message.data;
+    /*const data = message.data;
     const action = screenActions[data.action];
-    console.log(`[TASK] Action=${data.action} Data=${JSON.stringify(data)}`);
-    if (action)
-        return action(data, message);
+    console.log(`[TASK] Action=${data.action} Data=${JSON.stringify(data)}`)
+    if (action) return action(data, message);
     //TextScreen.instance.println(data.text);
-    secondHandler(message);
+      secondHandler(message);*/
+    if (!message)
+        return;
+    if (!message.source)
+        return;
+    //console.log(message.data)
+    if (message.data.hasOwnProperty('response'))
+        return;
+    console.log(message.data);
+    const requestMessage = message.data;
+    const request = requestMessage.request;
+    const messageId = requestMessage.messageId;
+    const origin = requestMessage.origin;
+    let rawPostMessageReply = message.source.postMessage;
+    if (!rawPostMessageReply)
+        return;
+    const action = request.action;
+    const kind = request.kind;
+    const requestBody = request.body;
+    let func = OSAPIFunctions[`${action}$${kind}`];
+    let replyFunc = function (data) {
+        if (data instanceof OSAPIError) {
+            return rawPostMessageReply({
+                response: {
+                    error: {
+                        name: data.name,
+                        message: data.message,
+                        str: `${data.name}: ${data.message}`
+                    }
+                },
+                status: 1,
+                messageId
+            });
+        }
+        return rawPostMessageReply({
+            response: data,
+            status: 0,
+            messageId
+        });
+    };
+    func(replyFunc, requestBody);
 };
+const OSAPIFunctions = {
+    POST$open_alert(reply, body) {
+        reply(null);
+        alert(body.text);
+    },
+    POST$BOS_print(reply, body) {
+        TextScreen.instance.print(body);
+        reply(null);
+    },
+    DELETE$BOS_clear(reply, body) {
+        TextScreen.instance.clear();
+        reply(null);
+    },
+    PATCH$BOS_color(reply, body) {
+        TextScreen.instance.changeColor(body);
+        reply(null);
+    },
+    POST$BOS_printToLine(reply, body) {
+        TextScreen.instance.printToLine(body.text, body.line);
+        reply(null);
+    },
+    PATCH$BOS_cursorColor(reply, body) {
+        TextScreen.instance.changeCursorColor(body);
+        reply(null);
+    },
+    GET$localStorage(reply, body) {
+        reply(localStorage.getItem(body));
+    },
+    POST$localStorage(reply, body) {
+        localStorage.setItem(body.key, body.value);
+        reply(null);
+    }
+};
+window.OSAPIFunctions = OSAPIFunctions;
 function langFileParser(data) {
     function parseLine(text) {
         let lp = text.split('=');
@@ -328,6 +351,7 @@ function langFileParser(data) {
     return newJSON;
     // wait enable notifications and click on the notification when i send a message maybe that will work
 }
+window.langFileParser = langFileParser;
 function parseKeys(text, json) {
     return text
         .replace(/{key\.(.*)}/g, (str, name) => {
@@ -361,7 +385,9 @@ window.evalJS = function (code) {
 window.setupAmogusClock = function () {
     var clockobj = document.createElement("DIV");
     clockobj.id = "taskbar.CLOCK";
-    document.getElementById("taskbar")?.appendChild?.(clockobj);
+    let taskbar = document.getElementById("taskbar");
+    if (taskbar)
+        taskbar.appendChild(clockobj);
     setInterval(function () {
         var time = new Date();
         var combinedTime = time.getHours().toString + ":" + time.getMinutes().toString();
@@ -374,10 +400,8 @@ $B.run_script = function(src, name, url, run_loop) {
     return bak(src, name, url, run_loop);
 }*/
 //startup
-document.addEventListener('DOMContentLoaded', async()=>{
-	let duckv = await localforage.getItem('/bootloader/boot.py');
-
-	let bootScript = duckv || await (await fetch('/scripts/boot.py')).text();
-	
-	$B.run_script(bootScript, '__main__', 'https://udn-systems.udnsystems.repl.co/scripts/boot.py', true); // wtf is a B
+document.addEventListener('DOMContentLoaded', async () => {
+    let duckv = await window.localforage.getItem('/bootloader/boot.py');
+    let bootScript = duckv || await (await fetch('/scripts/boot.py')).text();
+    window.$B.run_script(bootScript, '__main__', 'https://udn-systems.udnsystems.repl.co/scripts/boot.py', true); // wtf is a B
 });

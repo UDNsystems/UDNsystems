@@ -17,6 +17,8 @@ declare global {
 			evalPy: Function;
 			ctx: CanvasRenderingContext2D;
 			localforage: any;
+			langFileParser: Function;
+			OSAPIFunctions: any;
 		}
 }
 
@@ -226,7 +228,7 @@ const screenActions: {[key: string]: Function} = {
     localStorage.removeItem(data.key);
   },
   shutdown() {
-    window.onerror?.('ACPI Shutdown.');
+    if (window.onerror) window.onerror('ACPI Shutdown.');
   },
 	setLocalforageItem(data: {key: string; value: string; action: string}, message: any) {
 		window.localforage.setItem(data.key, data.value).then(() => message.source.postMessage({action: data.action},'*'))
@@ -249,15 +251,117 @@ const screenActions: {[key: string]: Function} = {
 	}
 }
 function secondHandler(e: any) {}
-window.onmessage = function (message: any) {
-  const data = message.data;
+interface OSRequestMessage {
+	request: OSRequest;
+	messageId: number;
+	origin: string;
+}
+interface OSRequest {
+	action: OSRequestVerb;
+	kind: string;
+	body: any;
+}
+type OSRequestVerb = "GET" | "POST" | "PATCH" | "DELETE" | "LIST"
+class OSAPIError {
+	name: string;
+	message: string;
+	constructor(name: string, message: string) {
+		this.name = name;
+		this.message = message;
+	}
+}
+function OSAPI_GenerateMessageID() {
+	return Math.floor(Math.random() * 99999999)
+}
+window.onmessage = function (message: MessageEvent) {
+  /*const data = message.data;
   const action = screenActions[data.action];
   console.log(`[TASK] Action=${data.action} Data=${JSON.stringify(data)}`)
   if (action) return action(data, message);
   //TextScreen.instance.println(data.text);
-	secondHandler(message);
-}
+	secondHandler(message);*/
+	if (!message) return;
+	if (!message.source) return;
+	//console.log(message.data)
+	if (message.data.hasOwnProperty('response')) return;
+	console.log(message.data)
+	const requestMessage: OSRequestMessage = message.data;
+	const request: OSRequest = requestMessage.request;
+	const messageId: number = requestMessage.messageId;
+	const origin = requestMessage.origin;
+	
+	let rawPostMessageReply = message.source.postMessage as any;
+	if (!rawPostMessageReply) return;
 
+	const action = request.action;
+	const kind = request.kind;
+	const requestBody = request.body;
+	
+	let func = OSAPIFunctions[`${action}$${kind}`];
+
+	let replyFunc = function(data: Object | OSAPIError | void) {
+		if (data instanceof OSAPIError) {
+			return rawPostMessageReply({
+				response: {
+					error: {
+						name: data.name,
+						message: data.message,
+						str: `${data.name}: ${data.message}`
+					}
+				},
+				status: 1,
+				messageId
+			})
+		}
+		return rawPostMessageReply({
+			response: data,
+			status: 0,
+			messageId
+		})
+	}
+
+	func(replyFunc, requestBody);
+}
+const OSAPIFunctions: {[key: string]: Function} = {
+	/*POST$open_alert(reply: any, body: any) {
+		reply(null);
+		alert(body.text);
+	},*/
+	POST$BOS_print(reply: any, body: string) {
+		TextScreen.instance.print(body);
+		reply(null);
+	},
+	DELETE$BOS_clear(reply: any, body: void) {
+		TextScreen.instance.clear();
+		reply(null);
+	},
+	PATCH$BOS_color(reply: any, body: string) {
+		TextScreen.instance.changeColor(body);
+		reply(null);
+	},
+	POST$BOS_printToLine(reply: any, body: {line: number; text: string}) {
+		TextScreen.instance.printToLine(body.text, body.line);
+		reply(null);
+	},
+	PATCH$BOS_cursorColor(reply: any, body: string) {
+		TextScreen.instance.changeCursorColor(body);
+		reply(null);
+	},
+	GET$localStorage(reply: any, body: string) {
+		reply(localStorage.getItem(body));
+	},
+	POST$localStorage(reply: any, body: {key: string; value: any}) {
+		localStorage.setItem(body.key, body.value);
+		reply(null);
+	},
+	LIST$localStorage(reply: any, body: void) {
+		reply(Object.keys(localStorage));
+	},
+	PATCH$bootloader(reply: any, body: string) {
+		window.localforage.setItem('/bootloader/boot.py', body).then(reply);
+	}
+};
+window.OSAPIFunctions = OSAPIFunctions;
 function langFileParser(data: string) {
   function parseLine(text: string) {
     let lp = text.split('=');
@@ -287,6 +391,7 @@ function langFileParser(data: string) {
   return newJSON;
   // wait enable notifications and click on the notification when i send a message maybe that will work
 }
+window.langFileParser = langFileParser;
 function parseKeys(text: string, json: {[key: string]: string}) {
   return text
     .replace(/{key\.(.*)}/g, (str: string, name: string) => {
@@ -320,7 +425,8 @@ window.evalJS = function(code: string){
 window.setupAmogusClock = function(){
   var clockobj = document.createElement("DIV")
   clockobj.id = "taskbar.CLOCK"
-  document.getElementById("taskbar")?.appendChild?.(clockobj);
+	let taskbar = document.getElementById("taskbar");
+  if (taskbar) taskbar.appendChild(clockobj);
   setInterval(function(){
     var time = new Date()
     var combinedTime = time.getHours().toString+":"+time.getMinutes().toString();
