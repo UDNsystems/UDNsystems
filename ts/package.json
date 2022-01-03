@@ -13,6 +13,7 @@
     "localforage": "^1.10.0"
   },
   "devDependencies": {
+    "ty": "0.0.1",
     "typescript": "^4.5.2"
   }
 }

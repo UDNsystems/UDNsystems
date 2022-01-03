@@ -72,7 +72,7 @@
     document.getElementById('tinydoc').innerText = `Instructions:
   0x08 <memoryAddress> <value> - writes a number to a memory address
   0x09 <memoryAddress> <...string> - reads any following bytes as a string until a NUL(0x0) byte is found and writes to the memory address
-  0x0A <memoryAddress> - outputs a memory address value as number
+  0x1A <memoryAddress> - outputs a memory address value as number
   0x0B <memoryAddress> - outputs a memory address value as a unicode char
   0x0C <memoryAddress> - outputs a string value from memory
   0x0D <startAddress> <finishAddress> <value> - fills memory with <value> starting from <startAddress> and ending in <finishAddress>
@@ -120,12 +120,13 @@ Memory addresses (for this page won't work on normal UDN):
       }
     }
     document.getElementById('run').onclick = function() {
-      let program = "0x0 "+document.getElementById('program').value;
+      let program = document.getElementById('program').value;
       let programBytes = program
         .replace(/\n+/g,"\n")
-        .replace(/\n/g," ")
+				.replace(/\n/g," 0x0a ")
         .replace(/ +/g," ")
         .split(' ').map(x => Number(x));
+			console.log(programBytes)
       //let {start, end} = UDNasm.writeArrayToMemory(programBytes, 0x0);
       //UDNasm.runFromMemory(start, end);
       UDNexe(programBytes);
@@ -157,5 +158,6 @@ Memory addresses (for this page won't work on normal UDN):
       UDNexe.memory[0xf4] = Date.now();
     },100)
   </script>
+	<script src="./colorkonsole.js"></script>
 </body>
 </html>

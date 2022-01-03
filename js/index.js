@@ -241,12 +241,6 @@ function OSAPI_GenerateMessageID() {
     return Math.floor(Math.random() * 99999999);
 }
 window.onmessage = function (message) {
-    /*const data = message.data;
-    const action = screenActions[data.action];
-    console.log(`[TASK] Action=${data.action} Data=${JSON.stringify(data)}`)
-    if (action) return action(data, message);
-    //TextScreen.instance.println(data.text);
-      secondHandler(message);*/
     if (!message)
         return;
     if (!message.source)

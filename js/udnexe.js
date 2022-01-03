@@ -31,6 +31,22 @@ async function UDNexe(binary) {
       var str = strArr.join('');
       return str;
     }
+		function findPositionFromLineIndex(index) {
+			let newlines = 0;
+			let prevIndex = 0;
+			if (index === 0) return 0;
+			for (let i = 0; i < binary.length; i++) {
+				let byte = binary[i];
+				if (byte === 0x0a) {
+					if (newlines++ === index) {
+						return prevIndex;
+					} else {
+						prevIndex = i;
+					}
+				}
+			}
+			return -1;
+		}
     let instruction = binary[pointer];
     /*switch (instruction) {
       case 0x08: // writes a number value to memory
@@ -90,7 +106,12 @@ async function UDNexe(binary) {
     if (result instanceof Promise) {
       await result;
     }
-    if (gotod > -1) pointer = gotod;
+    if (gotod > -1) {
+			let pos = findPositionFromLineIndex(gotod);
+			if (pos < 0) return UDNexe.error('Invalid line index');
+			pointer = pos-1;
+			
+		}
     if (UDNexe.debug) console.groupEnd();
     if (_break) break;
   }
@@ -115,6 +136,7 @@ UDNexe.debug = true;
 UDNexe.runCount = 0;
 UDNexe.instructions = {
   0x0() {},
+	0x0a() {},
   0x08({getTheNextBytes}) {
     var [memoryAddress, value] = getTheNextBytes(2);
     if (memoryAddress > UDNexe.memory.length) return UDNexe.error('Segmentation fault');
@@ -133,7 +155,7 @@ UDNexe.instructions = {
     str += "\0"
     writeStringToMemory(str, memoryAddress);
   },
-  0x0A({getTheNextBytes}) {
+  0x1A({getTheNextBytes}) {
     var [memoryAddress] = getTheNextBytes(1);
     if (memoryAddress > UDNexe.memory.length) return UDNexe.error('Segmentation fault');
     if (memoryAddress < 0) return UDNexe.error('Segmentation fault');
@@ -193,7 +215,7 @@ UDNexe.instructions = {
     var [position] = getTheNextBytes(1);
     if (position < 0) return UDNexe.error('Invalid pointer position');
     if (position > binary.length) return UDNexe.error('Pointer position overflow');
-    goto(position+1);
+    goto(position);
   },
   0x10({getTheNextBytes}) {
     var [ms] = getTheNextBytes(1);
