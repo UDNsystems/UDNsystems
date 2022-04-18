@@ -1,0 +1,34 @@
+<!--
+DONE: make add link button ACTUALLY add a link
+DONE: apply contentEditable or designMode only to one div
+TODO: add font size, font editing [via selecting?]
+-->
+
+<script>
+document.getElementById('d1').contentEditable = "true";
+
+function v(d) {
+	return document.getElementById(d).value
+}
+</script>
+<button type='button' onclick='document.getElementById("d1").innerHTML += "<h1>Header 1</h1>"'>H1</button>
+<button type='button' onclick='document.getElementById("d1").innerHTML += "<h2>Header 2</h2>"'>H2</button>
+<button type='button' onclick='document.getElementById("d1").innerHTML += "<h3>Header 3</h3>"'>H3</button>
+<button type='button' onclick='document.getElementById("d1").innerHTML += "<h4>Header 4</h4>"'>H4</button>
+<button type='button' onclick='document.getElementById("d1").innerHTML += "<h5>Header 5</h5>"'>H5</button>
+<button type='button' onclick='document.getElementById("d1").innerHTML += "<h6>Header 6</h6>"'>H6</button>
+<input type='textbox' id='a' placeholder='link name'/>
+<input type='textbox' id='b' placeholder='link url'/>
+<button type='button' onclick='generateLink()'>Link</button>
+
+<script>
+//document.designMode="on"
+//document.contentEdible="on"
+function generateLink() {
+	//document.getElementById("d1").innerHTML += //; // later use encodeURIComponent and htmlspecialchars phpjs
+	document.getElementById("d1").innerHTML += "<a href='"+v("a")+"'>"+v("b")+"</a>"
+}
+</script>
+<div id="d1" contenteditable style="width:100%;height:100%;">
+Write text here.
+</div>
